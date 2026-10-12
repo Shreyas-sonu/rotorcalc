@@ -2,6 +2,7 @@
 
 import { useId } from "react";
 import { useReducedMotion } from "motion/react";
+import { Wisp } from "./PlantFlow";
 
 export type Part = "inlet" | "valve" | "blades" | "exhaust" | "gland" | "gearbox" | "generator";
 
@@ -183,6 +184,12 @@ export function Cutaway({ active = null, flow = 0.5, heat = 0.7, load = 0.5, wet
             <rect x={x} y={CY + 8} width="18" height="14" fill={`url(#${uid}hatch)`} stroke={on("gland") ? "#ffb347" : "#5d6f88"} />
           </g>
         ))}
+      </g>
+
+      {/* A little steam always escapes past the glands */}
+      <g opacity={dim("gland") * (on("gland") ? 1 : 0.55)} style={{ transition: "opacity .3s" }}>
+        <Wisp x={171} y={CY - 26} scale={0.55} still={!!still} />
+        <Wisp x={463} y={CY - 26} scale={0.55} delay={1.3} still={!!still} />
       </g>
 
       {/* Bearings */}

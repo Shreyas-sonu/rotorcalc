@@ -3,6 +3,7 @@ import { Logo } from "@/components/brand/Logo";
 import { Hero } from "@/components/landing/Hero";
 import { PartsExplorer } from "@/components/landing/PartsExplorer";
 import { Pricing } from "@/components/landing/Pricing";
+import { PlantFlow } from "@/components/turbine/PlantFlow";
 import { BRAND } from "@/lib/brand";
 
 const CALCS = [
@@ -57,6 +58,7 @@ export default function Landing() {
           </Link>
           <nav className="hidden items-center gap-8 text-sm text-mut md:flex">
             <a href="#calculators" className="hover:text-ink">Calculators</a>
+            <a href="#plant" className="hover:text-ink">The plant</a>
             <a href="#machine" className="hover:text-ink">The machine</a>
             <a href="#accuracy" className="hover:text-ink">Accuracy</a>
             <a href="#pricing" className="hover:text-ink">Pricing</a>
@@ -101,6 +103,28 @@ export default function Landing() {
                 <p className="mt-2 text-sm leading-relaxed text-mut">{c.text}</p>
               </div>
             ))}
+          </div>
+        </Section>
+
+        <Section id="plant" eyebrow="The plant" title="From fuel to power, the whole steam side." lead="Boiler, steam main, turbine, generator, process steam and feed water. Every calculator works on one part of this loop, with the same steam properties throughout.">
+          <div className="card overflow-hidden">
+            <div className="steam-line h-[2px] opacity-70" />
+            <div className="p-4 sm:p-8">
+              <PlantFlow className="w-full" />
+            </div>
+            <dl className="grid gap-px border-t border-line bg-line sm:grid-cols-4">
+              {[
+                ["Boiler", "Steam generated from your fuel mix"],
+                ["Steam flow", "Steam the turbine needs for a target"],
+                ["Power output", "What the generator should deliver"],
+                ["Efficiency", "How well the machine is really doing"],
+              ].map(([name, text]) => (
+                <div key={name} className="bg-panel px-5 py-4">
+                  <dt className="text-sm font-semibold">{name}</dt>
+                  <dd className="mt-1 text-sm text-mut">{text}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </Section>
 
