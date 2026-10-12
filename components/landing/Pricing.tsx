@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { PLANS, inr, priceOf, type Cycle } from "@/lib/plans";
+import { PLANS, inr, priceOf, type Cycle, type PlanId } from "@/lib/plans";
 
-/** Plan cards with a monthly / yearly switch. `hrefFor` decides where each button goes. */
-export function Pricing({ signedIn = false }: { signedIn?: boolean }) {
+/** Plan cards with a monthly / yearly switch. Signed-in users go to checkout, visitors to register. */
+export function Pricing({ signedIn = false, trialUsed = false, current }: { signedIn?: boolean; trialUsed?: boolean; current?: PlanId }) {
   const [cycle, setCycle] = useState<Cycle>("yearly");
   return (
     <div>
@@ -38,9 +38,15 @@ export function Pricing({ signedIn = false }: { signedIn?: boolean }) {
                 {plan.monthly > 0 && <span className="text-sm text-mut">/ month</span>}
               </div>
               <p className="mt-1 h-5 text-xs text-dim">{plan.monthly === 0 ? "14 days, then choose a plan" : cycle === "yearly" ? `${inr(price)} billed yearly` : "billed monthly"}</p>
-              <Link href={target} className={`mt-6 rounded-xl px-5 py-3 text-center text-sm ${plan.highlight ? "btn-hot" : "btn-ghost font-medium"}`}>
-                {plan.monthly === 0 ? "Start free trial" : `Choose ${plan.name}`}
-              </Link>
+              {current === plan.id ? (
+                <span className="mt-6 rounded-xl border border-ok/40 bg-ok/10 px-5 py-3 text-center text-sm font-medium text-ok">Your current plan</span>
+              ) : plan.id === "trial" && trialUsed ? (
+                <span className="mt-6 rounded-xl border border-line px-5 py-3 text-center text-sm text-dim">Trial already used</span>
+              ) : (
+                <Link href={target} className={`mt-6 rounded-xl px-5 py-3 text-center text-sm ${plan.highlight ? "btn-hot" : "btn-ghost font-medium"}`}>
+                  {plan.monthly === 0 ? "Start free trial" : `Choose ${plan.name}`}
+                </Link>
+              )}
               <ul className="mt-7 grid gap-3 text-sm">
                 {plan.features.map((f) => (
                   <li key={f} className="flex gap-3 text-mut">

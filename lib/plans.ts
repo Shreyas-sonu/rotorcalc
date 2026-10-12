@@ -90,4 +90,11 @@ export function priceOf(plan: Plan, cycle: Cycle): number {
   return cycle === "yearly" ? plan.yearly : plan.monthly;
 }
 
+export const GST_RATE = 0.18;
+
+/** Price plus GST, in whole rupees. */
+export function withGst(amount: number): number {
+  return amount + Math.round(amount * GST_RATE);
+}
+
 export const inr = (n: number) => "₹" + n.toLocaleString("en-IN");
