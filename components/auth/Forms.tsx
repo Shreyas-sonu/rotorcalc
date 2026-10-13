@@ -78,7 +78,17 @@ export function RegisterForm({ plan, cycle }: { plan?: string; cycle?: string })
       <TextField name="email" label="Work email" type="email" autoComplete="email" defaultValue={state.values?.email} error={state.fields?.email} />
       <TextField name="password" label="Password" type="password" autoComplete="new-password" error={state.fields?.password} hint="At least 8 characters." />
       <Submit>Create account</Submit>
-      <p className="text-xs leading-relaxed text-dim">One person per account: you can sign in on up to 2 devices, one at a time.</p>
+      <p className="text-xs leading-relaxed text-dim">
+        One person per account: you can sign in on up to 2 devices, one at a time. By creating an account you agree to the{" "}
+        <Link href="/terms" className="underline hover:text-ink">
+          terms
+        </Link>{" "}
+        and the{" "}
+        <Link href="/privacy" className="underline hover:text-ink">
+          privacy policy
+        </Link>
+        .
+      </p>
     </form>
   );
 }

@@ -214,7 +214,15 @@ export default function Landing() {
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-5 py-8 text-sm text-dim">
           <Logo size={22} />
           <p>Engineering estimates. Confirm with the manufacturer before design or contractual use.</p>
-          <p>© 2026 {BRAND.name}</p>
+          <p className="flex gap-5">
+            <Link href="/privacy" className="hover:text-ink">
+              Privacy
+            </Link>
+            <Link href="/terms" className="hover:text-ink">
+              Terms
+            </Link>
+            <span>© 2026 {BRAND.name}</span>
+          </p>
         </div>
       </footer>
     </>
