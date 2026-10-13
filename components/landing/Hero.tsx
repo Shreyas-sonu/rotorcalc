@@ -91,10 +91,6 @@ export function Hero() {
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-6 px-5 pb-6 pt-14 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:pt-20">
         <div className="rise">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-line bg-panel px-3 py-1.5 text-xs text-mut shadow-sm">
-            <span className="h-1.5 w-1.5 rounded-full bg-ok" />
-            IAPWS-IF97 steam properties, checked against published values
-          </div>
           <h1 className="text-[2.6rem] font-semibold leading-[1.04] tracking-tight sm:text-6xl">
             Know what your turbine <span className="marker">should</span> make.
           </h1>
@@ -121,7 +117,7 @@ export function Hero() {
               <Turbine3D live={live} className="!absolute inset-y-0 !w-auto -left-10 -right-5 xl:-right-20 cursor-grab active:cursor-grabbing" />
             </Fallback>
           ) : (
-            <div className="flex h-full items-center">{flat}</div>
+            <div className="relative flex h-full items-center">{flat}</div>
           )}
           {use3d && <div className="pointer-events-none absolute bottom-3 right-4 text-xs text-dim">Drag to rotate · scroll to lift the casing</div>}
         </div>
