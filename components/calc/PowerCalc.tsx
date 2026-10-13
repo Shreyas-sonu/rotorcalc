@@ -105,7 +105,7 @@ export function PowerCalc({ saved, advancedAllowed }: { saved: Saved; advancedAl
           {!advancedAllowed && (
             <p className="rounded-xl border border-line bg-ink/[0.02] px-4 py-3 text-sm text-mut">
               Advanced mode sets each loss separately (blades, gearbox, generator, valve, glands). It is part of the Pro plan.{" "}
-              <a href="/plans" className="font-medium text-warm hover:underline">
+              <a href="/plans" className="font-medium text-brand hover:underline">
                 See plans
               </a>
             </p>
@@ -139,7 +139,7 @@ export function PowerCalc({ saved, advancedAllowed }: { saved: Saved; advancedAl
                       const t = e.target.value as Inputs["type"];
                       setV((p) => ({ ...p, type: t, etaOverall: t === "custom" ? p.etaOverall : TYPICAL[t] }));
                     }}
-                    className="h-11 w-full rounded-xl border border-line bg-panel-2 px-3 text-[15px] outline-none focus:border-warm"
+                    className="h-11 w-full rounded-xl border border-line bg-panel-2 px-3 text-[15px] outline-none focus:border-brand"
                   >
                     <option value="impulse">Impulse (typical 60 %)</option>
                     <option value="reaction">Reaction (typical 70 %)</option>

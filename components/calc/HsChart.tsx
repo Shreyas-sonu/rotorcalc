@@ -63,42 +63,42 @@ export function HsChart({ p1, p2, inlet, ideal, actual }: { p1: number; p2: numb
         </defs>
         {hTicks.map((h) => (
           <g key={h}>
-            <path d={`M${PAD.l} ${y(h)}H${W - PAD.r}`} stroke="#dbe2ea" />
-            <text x={PAD.l - 8} y={y(h) + 4} textAnchor="end" fontSize="10" fill="#6d7b8f">
+            <path d={`M${PAD.l} ${y(h)}H${W - PAD.r}`} stroke="#dfdbf0" />
+            <text x={PAD.l - 8} y={y(h) + 4} textAnchor="end" fontSize="10" fill="#726c8f">
               {h}
             </text>
           </g>
         ))}
         {sTicks.map((s) => (
           <g key={s}>
-            <path d={`M${x(s)} ${PAD.t}V${H - PAD.b}`} stroke="#dbe2ea" />
-            <text x={x(s)} y={H - PAD.b + 15} textAnchor="middle" fontSize="10" fill="#6d7b8f">
+            <path d={`M${x(s)} ${PAD.t}V${H - PAD.b}`} stroke="#dfdbf0" />
+            <text x={x(s)} y={H - PAD.b + 15} textAnchor="middle" fontSize="10" fill="#726c8f">
               {s}
             </text>
           </g>
         ))}
-        <text x={W - PAD.r} y={H - 4} textAnchor="end" fontSize="10" fill="#4a5a70">
+        <text x={W - PAD.r} y={H - 4} textAnchor="end" fontSize="10" fill="#4b4568">
           entropy s, kJ/(kg·K)
         </text>
-        <text x={PAD.l + 6} y={PAD.t + 12} fontSize="10" fill="#4a5a70">
+        <text x={PAD.l + 6} y={PAD.t + 12} fontSize="10" fill="#4b4568">
           enthalpy h, kJ/kg
         </text>
 
         <g clipPath="url(#hs-clip)">
-          <path d={`${line(data.dome)} L${x(data.dome[data.dome.length - 1].s)} ${H} L${x(data.dome[0].s)} ${H}Z`} fill="#0b7ec2" fillOpacity=".06" />
-          <path d={line(data.dome)} fill="none" stroke="#0b7ec2" strokeOpacity=".7" strokeWidth="1.4" />
-          <path d={line(data.hi)} fill="none" stroke="#e8590c" strokeOpacity=".65" strokeWidth="1.2" />
-          <path d={line(data.lo)} fill="none" stroke="#0b7ec2" strokeOpacity=".65" strokeWidth="1.2" />
-          <path d={`M${x(inlet.s)} ${y(inlet.h)}L${x(ideal.s)} ${y(ideal.h)}`} stroke="#0f1b2d" strokeWidth="1.4" strokeDasharray="5 4" />
-          {actual && <path d={`M${x(inlet.s)} ${y(inlet.h)}L${x(actual.s)} ${y(actual.h)}`} stroke="#c2620a" strokeWidth="2.4" strokeLinecap="round" />}
-          <circle cx={x(ideal.s)} cy={y(ideal.h)} r="4" fill="#ffffff" stroke="#0f1b2d" strokeWidth="1.5" />
-          {actual && <circle cx={x(actual.s)} cy={y(actual.h)} r="4.5" fill="#0b7ec2" />}
-          <circle cx={x(inlet.s)} cy={y(inlet.h)} r="5" fill="#e8590c" />
+          <path d={`${line(data.dome)} L${x(data.dome[data.dome.length - 1].s)} ${H} L${x(data.dome[0].s)} ${H}Z`} fill="#0b86a8" fillOpacity=".06" />
+          <path d={line(data.dome)} fill="none" stroke="#0b86a8" strokeOpacity=".7" strokeWidth="1.4" />
+          <path d={line(data.hi)} fill="none" stroke="#e3167b" strokeOpacity=".65" strokeWidth="1.2" />
+          <path d={line(data.lo)} fill="none" stroke="#0b86a8" strokeOpacity=".65" strokeWidth="1.2" />
+          <path d={`M${x(inlet.s)} ${y(inlet.h)}L${x(ideal.s)} ${y(ideal.h)}`} stroke="#150f33" strokeWidth="1.4" strokeDasharray="5 4" />
+          {actual && <path d={`M${x(inlet.s)} ${y(inlet.h)}L${x(actual.s)} ${y(actual.h)}`} stroke="#4a26e8" strokeWidth="2.4" strokeLinecap="round" />}
+          <circle cx={x(ideal.s)} cy={y(ideal.h)} r="4" fill="#ffffff" stroke="#150f33" strokeWidth="1.5" />
+          {actual && <circle cx={x(actual.s)} cy={y(actual.h)} r="4.5" fill="#0b86a8" />}
+          <circle cx={x(inlet.s)} cy={y(inlet.h)} r="5" fill="#e3167b" />
         </g>
-        <text x={x(inlet.s) + 9} y={y(inlet.h) - 6} fontSize="11" fill="#0f1b2d">
+        <text x={x(inlet.s) + 9} y={y(inlet.h) - 6} fontSize="11" fill="#150f33">
           Inlet
         </text>
-        <text x={W - PAD.r - 6} y={y(data.dome[0].h) + 16} textAnchor="end" fontSize="10" fill="#0b7ec2" opacity=".8">
+        <text x={W - PAD.r - 6} y={y(data.dome[0].h) + 16} textAnchor="end" fontSize="10" fill="#0b86a8" opacity=".8">
           wet steam below this line
         </text>
       </svg>
@@ -117,7 +117,7 @@ export function HsChart({ p1, p2, inlet, ideal, actual }: { p1: number; p2: numb
         </span>
         {actual && (
           <span>
-            <span className="mr-1.5 inline-block h-0.5 w-4 translate-y-[-3px] bg-warm" />
+            <span className="mr-1.5 inline-block h-0.5 w-4 translate-y-[-3px] bg-brand" />
             actual
           </span>
         )}

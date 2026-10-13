@@ -8,7 +8,7 @@ export type BoilerPart = "fuel" | "furnace" | "steam" | "feed";
 
 const GROUND = 346;
 const TUBES = [262, 310, 358, 406, 454, 502];
-const STRUCT = "#4f6a85";
+const STRUCT = "#4d4a7a";
 const FUEL = "#a8743a";
 
 /** Animated section of a water-tube boiler: fuel in, flame, feed water in, steam out. */
@@ -38,7 +38,7 @@ export function BoilerDiagram({
 
   const tag = (part: BoilerPart, name: string, x: number, y: number, anchor: "start" | "middle" | "end" = "start") => (
     <g opacity={dim(part)} style={fade}>
-      <text x={x} y={y} textAnchor={anchor} fontSize="10.5" fontWeight="600" letterSpacing=".08em" fill={on(part) ? ART.hot : ART.dim} style={{ textTransform: "uppercase" }}>
+      <text x={x} y={y} textAnchor={anchor} fontSize="10.5" fontWeight="600" letterSpacing=".08em" fill={on(part) ? ART.brand : ART.dim} style={{ textTransform: "uppercase" }}>
         {name}
       </text>
       {labels[part] && (
@@ -89,7 +89,7 @@ export function BoilerDiagram({
 
       {/* Furnace: cladding, refractory lining, firebox */}
       <g opacity={dim("furnace")} style={fade} filter={glow("furnace")}>
-        <rect x="230" y="120" width="320" height={GROUND - 120} fill={`url(#${uid}greyx)`} stroke={on("furnace") ? ART.hot : ART.edge} strokeWidth="1.6" />
+        <rect x="230" y="120" width="320" height={GROUND - 120} fill={`url(#${uid}greyx)`} stroke={on("furnace") ? ART.brand : ART.edge} strokeWidth="1.6" />
         <rect x="236" y="126" width="308" height={GROUND - 126} fill={`url(#${uid}brick)`} />
         <rect x="248" y="138" width="284" height="200" fill={`url(#${uid}firebox)`} />
         <rect x="532" y="166" width="18" height="28" fill={`url(#${uid}firebox)`} />
@@ -132,8 +132,8 @@ export function BoilerDiagram({
       {/* Steam drum, cut open: water below, steam above */}
       <g opacity={dim("steam")} style={fade} filter={glow("steam")}>
         <Pipe d="M506 56 H660 V20" w={20} fluid={ART.hot} fluidOpacity={0.36} />
-        <rect x="270" y="38" width="240" height="58" rx="29" fill={`url(#${uid}grey)`} stroke={on("steam") ? ART.hot : ART.edge} strokeWidth="1.8" />
-        <rect x="276" y="44" width="228" height="46" rx="23" fill="#fff5ec" />
+        <rect x="270" y="38" width="240" height="58" rx="29" fill={`url(#${uid}grey)`} stroke={on("steam") ? ART.brand : ART.edge} strokeWidth="1.8" />
+        <rect x="276" y="44" width="228" height="46" rx="23" fill="#fdeef6" />
         <path d="M277 68 H503 A23 23 0 0 1 481 90 H299 A23 23 0 0 1 277 68Z" fill="#bfe0f5" />
         <path d="M277 68 H503" stroke={ART.cool} strokeOpacity=".6" strokeWidth="1.2" />
         {/* Safety valve */}
@@ -166,11 +166,11 @@ export function BoilerDiagram({
         {[50, 122].map((x) => (
           <rect key={x} x={x - 2.5} y="212" width="5" height={GROUND - 212} fill={STRUCT} />
         ))}
-        <path d="M60 250 H112 L166 296 H240 V322 H150Z" fill={`url(#${uid}grey)`} stroke={on("fuel") ? ART.hot : ART.edge} strokeWidth="1.5" strokeLinejoin="round" />
+        <path d="M60 250 H112 L166 296 H240 V322 H150Z" fill={`url(#${uid}grey)`} stroke={on("fuel") ? ART.brand : ART.edge} strokeWidth="1.5" strokeLinejoin="round" />
         <rect x="230" y="298" width="18" height="22" fill={`url(#${uid}firebox)`} />
         <path d="M54 204 Q86 184 118 204Z" fill={FUEL} />
-        <path d="M46 200 H126 L112 250 H60Z" fill={`url(#${uid}blue)`} stroke={on("fuel") ? ART.hot : ART.blueDark} strokeWidth="1.5" strokeLinejoin="round" />
-        <path d="M46 200 H126" stroke="#8fbfe0" strokeWidth="2" />
+        <path d="M46 200 H126 L112 250 H60Z" fill={`url(#${uid}blue)`} stroke={on("fuel") ? ART.brand : ART.blueDark} strokeWidth="1.5" strokeLinejoin="round" />
+        <path d="M46 200 H126" stroke="#a9a1f2" strokeWidth="2" />
         {!still &&
           [0, 1, 2, 3, 4].map((i) => (
             <rect key={i} width="8" height="6" rx="1.5" fill={FUEL} stroke="#7a5226" strokeWidth=".6">

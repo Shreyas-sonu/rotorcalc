@@ -29,10 +29,10 @@ export function PartsExplorer() {
               onClick={() => setActive(p.id)}
               aria-pressed={active === p.id}
               className={`flex w-full items-center gap-4 rounded-xl border px-4 py-3 text-left transition-colors ${
-                active === p.id ? "border-warm/50 bg-warm/[0.07]" : "border-transparent hover:bg-ink/[0.04]"
+                active === p.id ? "border-brand/50 bg-brand/[0.07]" : "border-transparent hover:bg-ink/[0.04]"
               }`}
             >
-              <span className={`font-mono text-xs tabular-nums ${active === p.id ? "text-warm" : "text-dim"}`}>0{i + 1}</span>
+              <span className={`font-mono text-xs tabular-nums ${active === p.id ? "text-brand" : "text-dim"}`}>0{i + 1}</span>
               <span className={`font-medium ${active === p.id ? "text-ink" : "text-mut"}`}>{p.title}</span>
             </button>
           </li>
@@ -45,7 +45,7 @@ export function PartsExplorer() {
           <p className="mt-1.5 leading-relaxed text-mut">{part.text}</p>
           <p className="mt-3 text-sm">
             <span className="text-dim">You enter: </span>
-            <span className="text-warm">{part.inputs}</span>
+            <span className="text-brand">{part.inputs}</span>
           </p>
         </div>
       </div>

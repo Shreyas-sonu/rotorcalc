@@ -32,11 +32,11 @@ export default async function AppLayout({ children }: { children: React.ReactNod
           <div className="flex shrink-0 items-center gap-3 text-sm">
             <Link
               href="/plans"
-              className={`hidden rounded-full border px-3 py-1 text-xs sm:block ${isTrial ? "border-warm/50 text-warm hover:bg-warm/10" : "border-line text-mut hover:text-ink"}`}
+              className={`hidden rounded-full border px-3 py-1 text-xs sm:block ${isTrial ? "border-brand/50 text-brand hover:bg-brand/10" : "border-line text-mut hover:text-ink"}`}
             >
               {isTrial ? `Trial · ${daysLeft} of ${TRIAL_DAYS} days left · Upgrade` : `${access.plan.name} plan`}
             </Link>
-            <Link href="/app/account" aria-label="Account" className="grid h-9 w-9 place-items-center rounded-full border border-line bg-ink/[0.04] text-xs font-semibold hover:border-warm/60">
+            <Link href="/app/account" aria-label="Account" className="grid h-9 w-9 place-items-center rounded-full border border-line bg-ink/[0.04] text-xs font-semibold hover:border-brand/60">
               {initials}
             </Link>
             <form action={signOut}>

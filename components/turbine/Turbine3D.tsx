@@ -31,11 +31,11 @@ const CUT_A = 0.157;
 const BOILER: V3 = [-4.6, 0, -1.9];
 const STACK: V3 = [BOILER[0] + 1.7, 0, BOILER[2] - 2.25];
 
-const BLUE = "#2f6f9e";
-const STRUCT = "#4f6a85";
-const YELLOW = "#f2b705";
-const SIGNAL = "#f26a1b";
-const COOL = new THREE.Color("#9ad6ff");
+const BLUE = "#3528b3";
+const STRUCT = "#4d4a7a";
+const GUARD = "#c4ee12";
+const SIGNAL = "#e3246e";
+const COOL = new THREE.Color("#8fe6f7");
 
 /* Materials */
 const Paint = ({ color, rough = 0.42 }: { color: string; rough?: number }) => <meshStandardMaterial color={color} metalness={0.25} roughness={rough} />;
@@ -419,11 +419,11 @@ function Fixed() {
       {/* Coupling guard */}
       <mesh position={[2.35, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
         <cylinderGeometry args={[0.42, 0.42, 0.44, 28, 1, true, 0, Math.PI]} />
-        <meshStandardMaterial color={YELLOW} metalness={0.2} roughness={0.5} side={THREE.DoubleSide} />
+        <meshStandardMaterial color={GUARD} metalness={0.2} roughness={0.5} side={THREE.DoubleSide} />
       </mesh>
       {[1, -1].map((s) => (
         <Box key={s} at={[2.35, -0.775, s * 0.42]} size={[0.44, 1.55, 0.02]}>
-          <Paint color={YELLOW} rough={0.5} />
+          <Paint color={GUARD} rough={0.5} />
         </Box>
       ))}
     </group>
@@ -448,7 +448,7 @@ function Exhaust() {
         <Steel color="#aeb7c2" rough={0.35} />
       </Cyl>
       <Cyl at={[1.05, -1.32, 2.1]} r={0.355} len={0.2}>
-        <Paint color="#2a8fd0" />
+        <Paint color="#12a5c8" />
       </Cyl>
       <Cyl at={[1.05, FLOOR + 0.04, 2.1]} r={0.46} len={0.08}>
         <Cast />
@@ -562,7 +562,7 @@ function Steam({ live }: { live: LiveRef }) {
     const col = attrs.color.array as Float32Array;
     const time = state.clock.elapsedTime;
     const shown = Math.floor(COUNT * (0.25 + flow * 0.75));
-    hot.setHSL((36 - heat * 26) / 360, 1, 0.56);
+    hot.setHSL((300 + heat * 34) / 360, 0.95, 0.6);
     for (let i = 0; i < COUNT; i++) {
       const o = i * 3;
       const q = i * 4;
@@ -652,17 +652,17 @@ const STEAM_MAIN = route([
 /** Main steam line: boiler drum to the turbine's steam chest, with the stop valve on the last drop. */
 function SteamMain({ live }: { live: LiveRef }) {
   const band = useRef<THREE.MeshStandardMaterial>(null);
-  const warm = useMemo(() => new THREE.Color("#f6a41c"), []);
-  const hot = useMemo(() => new THREE.Color("#e2350d"), []);
+  const warm = useMemo(() => new THREE.Color("#8f5cf0"), []);
+  const hot = useMemo(() => new THREE.Color("#e3167b"), []);
   useFrame(() => {
     if (band.current) band.current.color.copy(warm).lerp(hot, live.current.heat);
   });
   return (
     <group>
       <Pipe path={STEAM_MAIN} r={0.15} />
-      {/* Line marker: goes from amber to red as the inlet temperature rises */}
+      {/* Line marker: goes from violet to magenta as the inlet temperature rises */}
       <Cyl at={[-2.05, 1.32, 0]} r={0.164} len={0.26}>
-        <meshStandardMaterial ref={band} color="#f6a41c" metalness={0.2} roughness={0.45} />
+        <meshStandardMaterial ref={band} color="#8f5cf0" metalness={0.2} roughness={0.45} />
       </Cyl>
       {/* Stop valve */}
       <group position={[-2.05, 2.05, 0]}>
@@ -683,11 +683,11 @@ function SteamMain({ live }: { live: LiveRef }) {
         </Cyl>
         <mesh position={[0, 0, 0.74]}>
           <torusGeometry args={[0.2, 0.024, 10, 32]} />
-          <Paint color="#d23c2a" />
+          <Paint color="#e3246e" />
         </mesh>
         {[0, Math.PI / 2].map((a) => (
           <Box key={a} at={[0, 0, 0.74]} size={[0.4, 0.03, 0.03]} rot={[0, 0, a]}>
-            <Paint color="#d23c2a" />
+            <Paint color="#e3246e" />
           </Box>
         ))}
       </group>
@@ -788,7 +788,7 @@ function Boiler({ live }: { live: LiveRef }) {
             <Steel />
           </Cyl>
           <Cyl at={[0, 0.29, 0]} r={0.08} len={0.1} seg={16}>
-            <Paint color="#d23c2a" />
+            <Paint color="#e3246e" />
           </Cyl>
         </group>
       ))}
@@ -841,21 +841,21 @@ function Boiler({ live }: { live: LiveRef }) {
         }}
       >
         <cylinderGeometry args={[0.02, 0.02, 0.55, 8]} />
-        <Paint color={YELLOW} rough={0.5} />
+        <Paint color={GUARD} rough={0.5} />
       </Repeat>
       {[0.66, 0.4].map((y) => (
         <group key={y}>
           <Box at={[0, y, 1.58]} size={[2.44, 0.035, 0.035]}>
-            <Paint color={YELLOW} rough={0.5} />
+            <Paint color={GUARD} rough={0.5} />
           </Box>
           <Box at={[1.22, y, 1.29]} size={[0.035, 0.035, 0.6]}>
-            <Paint color={YELLOW} rough={0.5} />
+            <Paint color={GUARD} rough={0.5} />
           </Box>
         </group>
       ))}
       {[1.12, 1.46].map((z) => (
         <Box key={z} at={[-1.36, -0.55, z]} size={[0.035, 2.8, 0.035]}>
-          <Paint color={YELLOW} rough={0.5} />
+          <Paint color={GUARD} rough={0.5} />
         </Box>
       ))}
       <Repeat
@@ -865,7 +865,7 @@ function Boiler({ live }: { live: LiveRef }) {
         }}
       >
         <boxGeometry args={[0.026, 0.026, 0.34]} />
-        <Paint color={YELLOW} rough={0.5} />
+        <Paint color={GUARD} rough={0.5} />
       </Repeat>
       {/* Flue gas path: duct, economiser, stack */}
       <Box at={[0, 1.3, -1.35]} size={[1.0, 0.5, 0.82]}>
@@ -905,7 +905,7 @@ function Stack() {
       {/* Red aviation bands near the top */}
       {[top - 0.5, top - 1.5].map((y) => (
         <Cyl key={y} at={[0, y + 0.25, 0]} r={stackRadius(y) + 0.004} r2={stackRadius(y + 0.5) + 0.004} len={0.5} seg={36}>
-          <Paint color="#d23c2a" rough={0.5} />
+          <Paint color="#e3246e" rough={0.5} />
         </Cyl>
       ))}
       <Cyl at={[0, top, 0]} r={stackRadius(top) + 0.02} len={0.05} seg={36}>
@@ -941,7 +941,7 @@ function Floor() {
     <>
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, FLOOR, 0]} renderOrder={-1}>
         <circleGeometry args={[7.6, 72]} />
-        <meshStandardMaterial color="#e6ebf0" metalness={0} roughness={1} alphaMap={alpha} transparent />
+        <meshStandardMaterial color="#e9e7f4" metalness={0} roughness={1} alphaMap={alpha} transparent />
       </mesh>
       {/* Turbine and generator foundation */}
       <Box at={[1.0, (FLOOR + SLAB_TOP) / 2, 0]} size={[8.7, SLAB_TOP - FLOOR, 2.5]}>

@@ -16,10 +16,10 @@ export function Pricing({ signedIn = false, trialUsed = false, current }: { sign
             type="button"
             onClick={() => setCycle(c)}
             aria-pressed={cycle === c}
-            className={`rounded-full px-4 py-1.5 capitalize transition-colors ${cycle === c ? "bg-ink text-bg font-medium" : "text-mut hover:text-ink"}`}
+            className={`rounded-full px-4 py-1.5 capitalize transition-colors ${cycle === c ? "bg-ink font-medium text-spark" : "text-mut hover:text-ink"}`}
           >
             {c}
-            {c === "yearly" && <span className={`ml-2 text-xs ${cycle === c ? "text-hot" : "text-warm"}`}>2 months free</span>}
+            {c === "yearly" && <span className={`ml-2 text-xs ${cycle === c ? "text-spark" : "text-brand"}`}>2 months free</span>}
           </button>
         ))}
       </div>
@@ -29,8 +29,8 @@ export function Pricing({ signedIn = false, trialUsed = false, current }: { sign
           const perMonth = cycle === "yearly" ? Math.round(plan.yearly / 12) : plan.monthly;
           const target = signedIn ? `/checkout?plan=${plan.id}&cycle=${cycle}` : `/register?plan=${plan.id}&cycle=${cycle}`;
           return (
-            <div key={plan.id} className={`card relative flex flex-col p-7 ${plan.highlight ? "border-hot/60 shadow-[0_24px_60px_-28px_var(--color-hot)]" : ""}`}>
-              {plan.highlight && <span className="absolute -top-3 left-7 rounded-full bg-hot px-3 py-1 text-xs font-semibold text-white">Most popular</span>}
+            <div key={plan.id} className={`card relative flex flex-col p-7 ${plan.highlight ? "border-[1.5px] border-ink shadow-[7px_7px_0_var(--color-spark)]" : ""}`}>
+              {plan.highlight && <span className="absolute -top-3 left-7 rounded-full border-[1.5px] border-ink bg-spark px-3 py-1 text-xs font-semibold text-ink">Most popular</span>}
               <h3 className="text-lg font-semibold">{plan.name}</h3>
               <p className="mt-1 min-h-10 text-sm text-mut">{plan.blurb}</p>
               <div className="mt-5 flex items-baseline gap-1.5">
@@ -43,7 +43,7 @@ export function Pricing({ signedIn = false, trialUsed = false, current }: { sign
               ) : plan.id === "trial" && trialUsed ? (
                 <span className="mt-6 rounded-xl border border-line px-5 py-3 text-center text-sm text-dim">Trial already used</span>
               ) : (
-                <Link href={target} className={`mt-6 rounded-xl px-5 py-3 text-center text-sm ${plan.highlight ? "btn-hot" : "btn-ghost font-medium"}`}>
+                <Link href={target} className={`mt-6 rounded-xl px-5 py-3 text-center text-sm ${plan.highlight ? "btn-spark" : "btn-ghost font-medium"}`}>
                   {plan.monthly === 0 ? "Start free trial" : `Choose ${plan.name}`}
                 </Link>
               )}

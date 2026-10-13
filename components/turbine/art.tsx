@@ -1,24 +1,25 @@
-/** Shared colours and drawing pieces for the plant illustrations. They follow the 3D model: blue machines, clad pipes, yellow guards. */
+/** Shared colours and drawing pieces for the plant illustrations. They follow the 3D model: indigo machines, clad pipes, lime guards. */
 export const ART = {
-  ink: "#0f1b2d",
-  mut: "#4a5a70",
-  dim: "#6d7b8f",
-  line: "#dbe2ea",
-  hot: "#e8590c",
-  cool: "#0b7ec2",
+  ink: "#150f33",
+  mut: "#4b4568",
+  dim: "#726c8f",
+  line: "#dfdbf0",
+  brand: "#4a26e8",
+  hot: "#e3167b",
+  cool: "#0b86a8",
   ok: "#0a8a57",
-  blue: "#2f6f9e",
-  blueDark: "#22557c",
+  blue: "#3b2ec2",
+  blueDark: "#261d86",
   clad: "#dfe4ea",
   edge: "#98a4b1",
   steel: "#c3cbd5",
   steelDark: "#7f8b99",
   cast: "#56606c",
   concrete: "#cfd4d9",
-  yellow: "#f2b705",
-  red: "#d23c2a",
-  cut: "#f26a1b",
-  room: "#f4f8fb",
+  yellow: "#c4ee12",
+  red: "#e3246e",
+  cut: "#e3246e",
+  room: "#f7f6fd",
 } as const;
 
 /** Gradients and filters, namespaced by `uid` so several drawings can share a page. */
@@ -37,7 +38,7 @@ export function ArtDefs({ uid }: { uid: string }) {
     [1, "#aab4bf"],
   ];
   const paint: [number, string][] = [
-    [0, "#5f9fcd"],
+    [0, "#7b70ef"],
     [0.45, ART.blue],
     [1, ART.blueDark],
   ];
@@ -75,7 +76,7 @@ export function ArtDefs({ uid }: { uid: string }) {
       </linearGradient>
       {/* Section hatching where a painted casting has been cut through */}
       <pattern id={`${uid}cut`} width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-        <rect width="6" height="6" fill="#d3e2ef" />
+        <rect width="6" height="6" fill="#dcd8f8" />
         <path d="M0 0v6" stroke={ART.blue} strokeWidth="1.8" />
       </pattern>
       <pattern id={`${uid}brick`} width="18" height="10" patternUnits="userSpaceOnUse">
@@ -83,7 +84,7 @@ export function ArtDefs({ uid }: { uid: string }) {
         <path d="M0 0h18M0 5h18M9 0v5M0 5v5M18 5v5" stroke="#f0d2bd" strokeWidth="1" />
       </pattern>
       <filter id={`${uid}glow`} x="-40%" y="-40%" width="180%" height="180%">
-        <feDropShadow dx="0" dy="0" stdDeviation="5" floodColor={ART.hot} floodOpacity=".6" />
+        <feDropShadow dx="0" dy="0" stdDeviation="5" floodColor={ART.brand} floodOpacity=".6" />
       </filter>
       <filter id={`${uid}soft`} x="-20%" y="-20%" width="140%" height="150%">
         <feDropShadow dx="0" dy="3" stdDeviation="4" floodColor={ART.ink} floodOpacity=".16" />
@@ -130,7 +131,7 @@ export function Wisp({ x, y, delay = 0, scale = 1, color = "#9db4c8", still = fa
 /** Hand valve seen from the side: body, flanges, bonnet, stem and a red handwheel. `cx, cy` is the centre of the pipe. */
 export function Valve({ uid, cx, cy, size = 1, active = false }: { uid: string; cx: number; cy: number; size?: number; active?: boolean }) {
   const s = size;
-  const edge = active ? ART.hot : "#3c454f";
+  const edge = active ? ART.brand : "#3c454f";
   return (
     <g transform={`translate(${cx} ${cy}) scale(${s})`}>
       <rect x="-19" y="-17" width="5" height="34" rx="1.2" fill={`url(#${uid}steel)`} stroke={ART.steelDark} strokeWidth=".7" />

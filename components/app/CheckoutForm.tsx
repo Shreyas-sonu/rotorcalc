@@ -5,7 +5,7 @@ import { pay, type PayState } from "@/app/(onboarding)/actions";
 import { Notice, Submit } from "@/components/auth/Form";
 
 const START: PayState = {};
-const box = "h-12 w-full rounded-xl border border-line bg-ink/[0.03] px-4 font-mono text-[15px] outline-none focus:border-warm";
+const box = "h-12 w-full rounded-xl border border-line bg-ink/[0.03] px-4 font-mono text-[15px] outline-none focus:border-brand";
 
 /** Pretend payment form. The card and UPI boxes have no `name`, so nothing typed in them is ever sent. */
 export function CheckoutForm({ plan, cycle, isTrial, payLabel }: { plan: string; cycle: string; isTrial: boolean; payLabel: string }) {

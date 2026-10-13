@@ -31,9 +31,9 @@ function SaveBar({ kind, saved, inputs, summary, canSave }: { kind: CalculatorId
         placeholder="Name this calculation, e.g. TG-2 at full load"
         aria-label="Calculation name"
         maxLength={120}
-        className="h-10 min-w-0 flex-1 rounded-xl border border-line bg-ink/[0.03] px-3.5 text-sm outline-none placeholder:text-dim focus:border-warm"
+        className="h-10 min-w-0 flex-1 rounded-xl border border-line bg-ink/[0.03] px-3.5 text-sm outline-none placeholder:text-dim focus:border-brand"
       />
-      <button type="button" onClick={save} disabled={pending || !canSave || !name.trim()} className="btn-hot h-10 rounded-xl px-4 text-sm">
+      <button type="button" onClick={save} disabled={pending || !canSave || !name.trim()} className="btn-spark h-10 rounded-xl px-4 text-sm">
         {pending ? "Saving…" : id ? "Save changes" : "Save"}
       </button>
       <button type="button" onClick={() => window.print()} className="btn-ghost h-10 rounded-xl px-4 text-sm text-mut">

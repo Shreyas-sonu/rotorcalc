@@ -19,12 +19,12 @@ export function AuthShell({ title, lead, children, footer }: { title: string; le
       </div>
       <div className="relative hidden overflow-hidden border-l border-line bg-panel lg:block">
         <div className="grid-bg absolute inset-0 [mask-image:radial-gradient(ellipse_70%_60%_at_50%_45%,black,transparent)]" />
-        <div className="pointer-events-none absolute -left-24 top-24 h-96 w-96 rounded-full bg-hot/20 blur-[120px]" />
+        <div className="pointer-events-none absolute -left-24 top-24 h-96 w-96 rounded-full bg-brand/15 blur-[120px]" />
         <div className="pointer-events-none absolute -right-24 bottom-24 h-96 w-96 rounded-full bg-cool/15 blur-[120px]" />
         <div className="relative flex h-full flex-col justify-center px-12">
           <Cutaway flow={0.6} heat={0.75} load={0.6} className="w-full" />
           <p className="mt-10 max-w-md text-2xl font-medium leading-snug tracking-tight">
-            From gauge readings to a number you can <span className="steam-text">defend.</span>
+            From gauge readings to a number you can <span className="marker">defend.</span>
           </p>
           <p className="mt-3 max-w-md text-mut">Verified IAPWS-IF97 steam properties. Wet exhaust handled exactly. Every input shown on the machine.</p>
         </div>

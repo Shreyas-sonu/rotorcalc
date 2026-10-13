@@ -20,7 +20,7 @@ const DEFAULTS: Inputs = {
   Tfw: q(105, "°C"),
 };
 
-const small = "h-10 w-full min-w-0 rounded-lg border border-line bg-ink/[0.03] px-3 font-mono text-sm tabular-nums outline-none focus:border-warm";
+const small = "h-10 w-full min-w-0 rounded-lg border border-line bg-ink/[0.03] px-3 font-mono text-sm tabular-nums outline-none focus:border-brand";
 
 export function BoilerCalc({ saved }: { saved: Saved }) {
   const [v, setV] = useState<Inputs>(() => ({ ...DEFAULTS, ...((saved?.inputs as Partial<Inputs>) ?? {}) }));
@@ -61,9 +61,9 @@ export function BoilerCalc({ saved }: { saved: Saved }) {
       canSave={result.ok}
       form={
         <>
-          <section className={`card p-5 transition-colors sm:p-6 ${step === 1 ? "border-warm/50" : ""}`}>
+          <section className={`card p-5 transition-colors sm:p-6 ${step === 1 ? "border-brand/50" : ""}`}>
             <header className="mb-5 flex items-center gap-3">
-              <span className={`grid h-7 w-7 shrink-0 place-items-center rounded-full border font-mono text-xs ${step === 1 ? "border-warm text-warm" : "border-line text-dim"}`}>1</span>
+              <span className={`grid h-7 w-7 shrink-0 place-items-center rounded-full border font-mono text-xs ${step === 1 ? "border-brand text-brand" : "border-line text-dim"}`}>1</span>
               <div>
                 <h2 className="font-semibold leading-tight">Fuel mix</h2>
                 <p className="text-xs text-dim">Share of each fuel by weight, and its gross calorific value</p>
@@ -87,7 +87,7 @@ export function BoilerCalc({ saved }: { saved: Saved }) {
               })}
               <div className="mt-1 flex items-center justify-between border-t border-line pt-3 text-sm">
                 <span className="text-mut">Total share</span>
-                <span className={`font-mono tabular-nums ${Math.abs(total - 100) < 0.01 ? "text-ok" : "text-warm"}`}>{fmt(total, 1)} %</span>
+                <span className={`font-mono tabular-nums ${Math.abs(total - 100) < 0.01 ? "text-ok" : "text-brand"}`}>{fmt(total, 1)} %</span>
               </div>
               {err.fuels && (
                 <p role="alert" className="text-sm text-bad">

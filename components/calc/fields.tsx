@@ -20,7 +20,7 @@ export const pct = (v: string) => Number.parseFloat(v) / 100;
 const tidy = (n: number) => String(Number(n.toPrecision(5)));
 
 const inputBox =
-  "h-11 w-full min-w-0 rounded-l-xl border border-r-0 bg-ink/[0.03] px-3.5 font-mono text-[15px] tabular-nums outline-none transition-colors focus:border-warm focus:bg-panel";
+  "h-11 w-full min-w-0 rounded-l-xl border border-r-0 bg-ink/[0.03] px-3.5 font-mono text-[15px] tabular-nums outline-none transition-colors focus:border-brand focus:bg-panel";
 
 function Shell({ id, label, hint, error, children }: { id: string; label: string; hint?: string; error?: string; children: React.ReactNode }) {
   return (
@@ -89,7 +89,7 @@ export function QuantityField({
           onChange={(e) => switchUnit(e.target.value)}
           onFocus={onFocus}
           aria-label={`${label} unit`}
-          className={`h-11 shrink-0 rounded-r-xl border bg-panel-2 px-2.5 text-sm text-mut outline-none focus:border-warm ${error ? "border-bad" : "border-line"}`}
+          className={`h-11 shrink-0 rounded-r-xl border bg-panel-2 px-2.5 text-sm text-mut outline-none focus:border-brand ${error ? "border-bad" : "border-line"}`}
         >
           {unitsOf(quantity).map((u) => (
             <option key={u}>{u}</option>
@@ -178,7 +178,7 @@ export function Segmented<T extends string>({ value, onChange, options, label }:
           type="button"
           onClick={() => onChange(o.id)}
           aria-pressed={value === o.id}
-          className={`rounded-lg px-4 py-1.5 transition-colors ${value === o.id ? "bg-ink font-medium text-bg" : "text-mut hover:text-ink"}`}
+          className={`rounded-lg px-4 py-1.5 transition-colors ${value === o.id ? "bg-ink font-medium text-spark" : "text-mut hover:text-ink"}`}
         >
           {o.label}
           {o.locked && <span className="ml-1.5 text-xs opacity-70">🔒</span>}
@@ -191,9 +191,9 @@ export function Segmented<T extends string>({ value, onChange, options, label }:
 /** A numbered step of the form. Lights up while one of its fields has focus. */
 export function Step({ n, title, note, active, children }: { n: number; title: string; note?: string; active?: boolean; children: React.ReactNode }) {
   return (
-    <section className={`card p-5 transition-colors sm:p-6 ${active ? "border-warm/50" : ""}`}>
+    <section className={`card p-5 transition-colors sm:p-6 ${active ? "border-brand/50" : ""}`}>
       <header className="mb-5 flex items-center gap-3">
-        <span className={`grid h-7 w-7 shrink-0 place-items-center rounded-full border font-mono text-xs ${active ? "border-warm text-warm" : "border-line text-dim"}`}>{n}</span>
+        <span className={`grid h-7 w-7 shrink-0 place-items-center rounded-full border font-mono text-xs ${active ? "border-brand text-brand" : "border-line text-dim"}`}>{n}</span>
         <div>
           <h2 className="font-semibold leading-tight">{title}</h2>
           {note && <p className="text-xs text-dim">{note}</p>}

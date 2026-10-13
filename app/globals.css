@@ -1,17 +1,21 @@
 @import "tailwindcss";
 
-/* Light plant-room palette. Colour still follows the steam: hot (orange) at the inlet, cool (blue) at the exhaust. */
+/*
+ * Indigo and hi-vis lime. Indigo is the brand, lime is the highlighter (buttons, marked words, guards on the machines).
+ * Steam keeps its own pair, read like a thermal camera: magenta where it is hot, cyan where it has cooled.
+ */
 @theme inline {
-  --color-bg: #f4f6f9;
+  --color-bg: #f6f5fc;
   --color-panel: #ffffff;
-  --color-panel-2: #eef2f6;
-  --color-line: #dbe2ea;
-  --color-ink: #0f1b2d;
-  --color-mut: #4a5a70;
-  --color-dim: #6d7b8f;
-  --color-hot: #e8590c;
-  --color-warm: #c2620a;
-  --color-cool: #0b7ec2;
+  --color-panel-2: #efedf9;
+  --color-line: #dfdbf0;
+  --color-ink: #150f33;
+  --color-mut: #4b4568;
+  --color-dim: #726c8f;
+  --color-brand: #4a26e8;
+  --color-spark: #c9f31d;
+  --color-hot: #e3167b;
+  --color-cool: #0b86a8;
   --color-ok: #0a8a57;
   --color-bad: #d92d20;
   --font-sans: var(--font-geist-sans);
@@ -31,68 +35,86 @@ body {
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--color-hot) 28%, transparent);
+  background: var(--color-spark);
+  color: var(--color-ink);
 }
 
 .steam-text {
-  background: linear-gradient(92deg, #f59e0b, var(--color-hot) 40%, var(--color-cool));
+  background: linear-gradient(92deg, var(--color-hot), var(--color-brand) 48%, var(--color-cool));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 .steam-line {
-  background: linear-gradient(90deg, var(--color-hot), #f59e0b, #38bdf8);
+  background: linear-gradient(90deg, var(--color-hot), var(--color-brand), #22c3e6);
+}
+
+/* A word run over with a highlighter and stuck on like a label. */
+.marker {
+  display: inline-block;
+  padding: 0 0.16em;
+  border-radius: 0.14em;
+  background: var(--color-spark);
+  color: var(--color-ink);
+  box-shadow: 0.07em 0.07em 0 var(--color-ink);
+  transform: rotate(-1.5deg);
 }
 
 .grid-bg {
   background-image:
-    linear-gradient(to right, rgb(15 27 45 / 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(15 27 45 / 0.05) 1px, transparent 1px);
+    linear-gradient(to right, rgb(74 38 232 / 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(74 38 232 / 0.06) 1px, transparent 1px);
   background-size: 48px 48px;
 }
 
-.card {
-  background: var(--color-panel);
-  border: 1px solid var(--color-line);
-  border-radius: 18px;
-  box-shadow:
-    0 1px 2px rgb(15 27 45 / 0.04),
-    0 14px 32px -18px rgb(15 27 45 / 0.16);
-}
+/* In the components layer so a utility class on the same element can still override them. */
+@layer components {
+  .card {
+    background: var(--color-panel);
+    border: 1px solid var(--color-line);
+    border-radius: 18px;
+    box-shadow:
+      0 1px 2px rgb(21 15 51 / 0.04),
+      0 14px 32px -18px rgb(46 28 140 / 0.22);
+  }
 
-.btn-hot {
-  background: linear-gradient(180deg, #f4731f, #e2530a);
-  color: #fff;
-  font-weight: 650;
-  box-shadow:
-    0 0 0 1px rgb(255 255 255 / 0.18) inset,
-    0 10px 24px -10px rgb(232 89 12 / 0.65);
-  transition:
-    transform 0.15s ease,
-    filter 0.15s ease;
-}
-.btn-hot:hover {
-  filter: brightness(1.06);
-  transform: translateY(-1px);
-}
-.btn-hot:disabled {
-  opacity: 0.55;
-  transform: none;
-  cursor: not-allowed;
-}
+  .btn-spark {
+    background: var(--color-spark);
+    color: var(--color-ink);
+    font-weight: 650;
+    border: 1.5px solid var(--color-ink);
+    box-shadow: 3px 3px 0 var(--color-ink);
+    transition:
+      transform 0.12s ease,
+      box-shadow 0.12s ease;
+  }
+  .btn-spark:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 5px 5px 0 var(--color-ink);
+  }
+  .btn-spark:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 var(--color-ink);
+  }
+  .btn-spark:disabled {
+    opacity: 0.55;
+    transform: none;
+    box-shadow: 3px 3px 0 var(--color-ink);
+    cursor: not-allowed;
+  }
 
-.btn-ghost {
-  border: 1px solid var(--color-line);
-  background: var(--color-panel);
-  box-shadow: 0 1px 2px rgb(15 27 45 / 0.04);
-  transition:
-    background 0.15s ease,
-    border-color 0.15s ease;
-}
-.btn-ghost:hover {
-  background: var(--color-panel-2);
-  border-color: #c3cdd9;
+  .btn-ghost {
+    border: 1.5px solid var(--color-line);
+    background: var(--color-panel);
+    transition:
+      background 0.15s ease,
+      border-color 0.15s ease;
+  }
+  .btn-ghost:hover {
+    background: var(--color-panel-2);
+    border-color: var(--color-ink);
+  }
 }
 
 input[type="range"] {
@@ -100,7 +122,7 @@ input[type="range"] {
   appearance: none;
   height: 4px;
   border-radius: 4px;
-  background: #cfd8e3;
+  background: #d5d0ec;
   outline: none;
 }
 input[type="range"]::-webkit-slider-thumb {
@@ -108,20 +130,18 @@ input[type="range"]::-webkit-slider-thumb {
   height: 18px;
   width: 18px;
   border-radius: 50%;
-  background: var(--color-hot);
-  border: 3px solid #fff;
-  box-shadow:
-    0 0 0 1px rgb(232 89 12 / 0.35),
-    0 3px 8px rgb(15 27 45 / 0.22);
+  background: var(--color-spark);
+  border: 2.5px solid var(--color-ink);
+  box-shadow: 2px 2px 0 var(--color-ink);
   cursor: pointer;
 }
 input[type="range"]::-moz-range-thumb {
   height: 14px;
   width: 14px;
   border-radius: 50%;
-  background: var(--color-hot);
-  border: 3px solid #fff;
-  box-shadow: 0 3px 8px rgb(15 27 45 / 0.22);
+  background: var(--color-spark);
+  border: 2.5px solid var(--color-ink);
+  box-shadow: 2px 2px 0 var(--color-ink);
   cursor: pointer;
 }
 input[type="number"]::-webkit-inner-spin-button {

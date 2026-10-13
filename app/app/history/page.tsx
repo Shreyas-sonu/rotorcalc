@@ -28,7 +28,7 @@ export default async function HistoryPage() {
         <div className="card p-10 text-center">
           <p className="text-lg font-medium">Nothing saved yet</p>
           <p className="mx-auto mt-2 max-w-sm text-mut">Run a calculation, give it a name and press Save. It will be listed here.</p>
-          <Link href="/app" className="btn-hot mt-6 inline-block rounded-xl px-5 py-3 text-sm">
+          <Link href="/app" className="btn-spark mt-6 inline-block rounded-xl px-5 py-3 text-sm">
             Open the power calculator
           </Link>
         </div>
@@ -41,7 +41,7 @@ export default async function HistoryPage() {
               <li key={r.id} className="card flex flex-wrap items-center justify-between gap-4 p-5">
                 <div className="min-w-0">
                   <div className="flex items-center gap-2.5">
-                    <span className="rounded-md border border-line px-2 py-0.5 text-xs text-warm">{calc?.name ?? r.kind}</span>
+                    <span className="rounded-md border border-line px-2 py-0.5 text-xs text-brand">{calc?.name ?? r.kind}</span>
                     <span className="truncate font-medium">{r.name}</span>
                   </div>
                   <div className="mt-1.5 text-sm text-mut">

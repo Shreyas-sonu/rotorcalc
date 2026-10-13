@@ -12,7 +12,7 @@ const POWER = "M838 196 H902";
 const GROUND = 400;
 const DECK = 296;
 const SHAFT = 200;
-const STRUCT = "#4f6a85";
+const STRUCT = "#4d4a7a";
 const FUEL = "#a8743a";
 /** Half-height of the turbine casing at x: it widens towards the low-pressure end. */
 const casing = (x: number) => 48 + (x - 474) * (40 / 172);
@@ -35,7 +35,7 @@ export function PlantFlow({ className }: { className?: string }) {
 
   const label = (x: number, y: number, title: string, sub: string) => (
     <g>
-      <text x={x} y={y} textAnchor="middle" fontSize="12" fontWeight="600" letterSpacing=".1em" fill={ART.hot} style={{ textTransform: "uppercase" }}>
+      <text x={x} y={y} textAnchor="middle" fontSize="12" fontWeight="600" letterSpacing=".1em" fill={ART.brand} style={{ textTransform: "uppercase" }}>
         {title}
       </text>
       <text x={x} y={y + 16} textAnchor="middle" fontSize="12" fill={ART.mut}>
@@ -184,12 +184,12 @@ export function PlantFlow({ className }: { className?: string }) {
         ))}
         <path d={`M488 ${windowTop(488)} L636 ${windowTop(636)} V${SHAFT - 5} H488Z`} fill="none" stroke={ART.cut} strokeWidth="2.2" strokeLinejoin="round" />
         {/* Horizontal joint flange and its bolts */}
-        <rect x="466" y={SHAFT - 5} width="190" height="10" rx="2" fill="#3d7fae" stroke={ART.blueDark} strokeWidth=".8" />
+        <rect x="466" y={SHAFT - 5} width="190" height="10" rx="2" fill="#5a4fdc" stroke={ART.blueDark} strokeWidth=".8" />
         <path d={`M474 ${SHAFT}H650`} stroke="#d5dbe2" strokeWidth="3.2" strokeDasharray="3.2 9" strokeLinecap="round" />
         {[453, 669].map((x) => (
           <rect key={x} x={x - 9} y={SHAFT - 16} width="18" height="32" rx="3" fill={`url(#${uid}blue)`} stroke={ART.blueDark} />
         ))}
-        <rect x="684" y={SHAFT - 16} width="30" height="32" rx="5" fill={ART.yellow} stroke="#b88a00" strokeWidth=".8" />
+        <rect x="684" y={SHAFT - 16} width="30" height="32" rx="5" fill={ART.yellow} stroke="#7f9c00" strokeWidth=".8" />
       </g>
 
       {/* Generator on its plinth */}
@@ -223,7 +223,7 @@ export function PlantFlow({ className }: { className?: string }) {
         <path d="M424 376v18M431 376v18M438 376v18" stroke="#b4bdc8" strokeWidth="1.3" />
         <rect x="410" y="382" width="7" height="8" fill={`url(#${uid}steel)`} />
         <circle cx="400" cy="386" r="13" fill={`url(#${uid}blue)`} stroke={ART.blueDark} strokeWidth="1.2" />
-        <circle cx="400" cy="386" r="6" fill="#d3e2ef" stroke={ART.blueDark} strokeWidth=".8" />
+        <circle cx="400" cy="386" r="6" fill="#dcd8f8" stroke={ART.blueDark} strokeWidth=".8" />
         <path d="M400 380v12M394 386h12" stroke={ART.blueDark} strokeWidth="1.6" strokeLinecap="round">
           {!still && <animateTransform attributeName="transform" type="rotate" from="0 400 386" to="360 400 386" dur="1.2s" repeatCount="indefinite" />}
         </path>

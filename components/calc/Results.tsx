@@ -80,7 +80,7 @@ export function Warnings({ items }: { items: string[] }) {
   return (
     <ul className="grid gap-2">
       {items.map((w) => (
-        <li key={w} className="flex gap-3 rounded-xl border border-warm/35 bg-warm/[0.08] px-4 py-3 text-sm leading-relaxed text-warm">
+        <li key={w} className="flex gap-3 rounded-xl border border-brand/35 bg-brand/[0.08] px-4 py-3 text-sm leading-relaxed text-brand">
           <span aria-hidden="true">⚠</span>
           {w}
         </li>

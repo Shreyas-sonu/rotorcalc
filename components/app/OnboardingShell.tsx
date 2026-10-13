@@ -21,7 +21,7 @@ export function OnboardingShell({ step, email, children }: { step: number; email
             return (
               <li key={s} className="flex items-center gap-3">
                 <span className={`flex items-center gap-2 ${current ? "text-ink" : done ? "text-ok" : "text-dim"}`}>
-                  <span className={`grid h-6 w-6 place-items-center rounded-full border text-xs ${current ? "border-warm text-warm" : done ? "border-ok bg-ok/15" : "border-line"}`}>
+                  <span className={`grid h-6 w-6 place-items-center rounded-full border text-xs ${current ? "border-brand text-brand" : done ? "border-ok bg-ok/15" : "border-line"}`}>
                     {done ? "✓" : n}
                   </span>
                   {s}

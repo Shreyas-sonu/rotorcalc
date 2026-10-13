@@ -39,7 +39,7 @@ export function TextField({
           required={required}
           aria-invalid={!!error}
           aria-describedby={error ? `${name}-error` : undefined}
-          className={`h-12 w-full rounded-xl border bg-ink/[0.03] px-4 text-[15px] outline-none transition-colors placeholder:text-dim focus:border-warm focus:bg-panel ${
+          className={`h-12 w-full rounded-xl border bg-ink/[0.03] px-4 text-[15px] outline-none transition-colors placeholder:text-dim focus:border-brand focus:bg-panel ${
             error ? "border-bad" : "border-line"
           } ${isPassword ? "pr-16" : ""}`}
         />
@@ -63,14 +63,14 @@ export function TextField({
 export function Submit({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   const { pending } = useFormStatus();
   return (
-    <button type="submit" disabled={pending} className={`btn-hot h-12 w-full rounded-xl text-[15px] ${className}`}>
+    <button type="submit" disabled={pending} className={`btn-spark h-12 w-full rounded-xl text-[15px] ${className}`}>
       {pending ? "One moment…" : children}
     </button>
   );
 }
 
 export function Notice({ tone = "info", children }: { tone?: "info" | "bad" | "ok"; children: React.ReactNode }) {
-  const style = tone === "bad" ? "border-bad/40 bg-bad/10 text-bad" : tone === "ok" ? "border-ok/40 bg-ok/10 text-ok" : "border-warm/40 bg-warm/10 text-warm";
+  const style = tone === "bad" ? "border-bad/40 bg-bad/10 text-bad" : tone === "ok" ? "border-ok/40 bg-ok/10 text-ok" : "border-brand/40 bg-brand/10 text-brand";
   return (
     <div role={tone === "bad" ? "alert" : "status"} className={`rounded-xl border px-4 py-3 text-sm leading-relaxed ${style}`}>
       {children}

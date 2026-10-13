@@ -50,7 +50,7 @@ export function Cutaway({ active = null, flow = 0.5, heat = 0.7, load = 0.5, wet
   const particles = 10 + level * 6;
   const travel = 4.4 - level * 0.6;
   const spin = 1.5 - Math.min(1, Math.max(0, load)) * 1.15;
-  const hot = `hsl(${32 - heat * 20} 96% ${53 - heat * 5}%)`;
+  const hot = `hsl(${322 + heat * 14} 86% ${55 - heat * 6}%)`;
   const dim = (p: Part | Part[]) => {
     if (!active) return 1;
     return (Array.isArray(p) ? p.includes(active) : p === active) ? 1 : 0.4;
@@ -74,7 +74,7 @@ export function Cutaway({ active = null, flow = 0.5, heat = 0.7, load = 0.5, wet
 
   const tag = (part: Part, x: number, y: number, anchor: "start" | "middle" | "end" = "start") => (
     <g opacity={dim(part)} style={fade}>
-      <text x={x} y={y} textAnchor={anchor} fontSize="10.5" fontWeight="600" letterSpacing=".08em" fill={on(part) ? ART.hot : ART.dim} style={{ textTransform: "uppercase" }}>
+      <text x={x} y={y} textAnchor={anchor} fontSize="10.5" fontWeight="600" letterSpacing=".08em" fill={on(part) ? ART.brand : ART.dim} style={{ textTransform: "uppercase" }}>
         {NAMES[part]}
       </text>
       {labels[part] && (
@@ -96,7 +96,7 @@ export function Cutaway({ active = null, flow = 0.5, heat = 0.7, load = 0.5, wet
         <ArtDefs uid={uid} />
         <linearGradient id={`${uid}steam`} x1="0" x2="1">
           <stop offset="0" stopColor={hot} stopOpacity=".34" />
-          <stop offset=".55" stopColor="#f6a65c" stopOpacity=".14" />
+          <stop offset=".55" stopColor="#9a6cf0" stopOpacity=".14" />
           <stop offset="1" stopColor={ART.cool} stopOpacity=".2" />
         </linearGradient>
         <pattern id={`${uid}blade`} width="12" height="12" patternUnits="userSpaceOnUse">
@@ -150,7 +150,7 @@ export function Cutaway({ active = null, flow = 0.5, heat = 0.7, load = 0.5, wet
         {STAGES.map((x, i) => {
           const hs = half(x);
           const hr = half(x + 22);
-          const edge = on("blades") ? ART.hot : "#5f6b78";
+          const edge = on("blades") ? ART.brand : "#5f6b78";
           return (
             <g key={x}>
               <rect x={x - 4} y={CY - hs} width="8" height={hs - 14} fill="#8793a1" stroke={edge} strokeWidth=".8" />
@@ -172,7 +172,7 @@ export function Cutaway({ active = null, flow = 0.5, heat = 0.7, load = 0.5, wet
           <g key={x}>
             {[CY - 22, CY + 8].map((y) => (
               <g key={y}>
-                <rect x={x} y={y} width="18" height="14" fill={`url(#${uid}cast)`} stroke={on("gland") ? ART.hot : "#3c454f"} />
+                <rect x={x} y={y} width="18" height="14" fill={`url(#${uid}cast)`} stroke={on("gland") ? ART.brand : "#3c454f"} />
                 <path d={`M${x + 4.5} ${y + 2}v10M${x + 9} ${y + 2}v10M${x + 13.5} ${y + 2}v10`} stroke="#c9d1da" strokeWidth="1.1" />
               </g>
             ))}
@@ -198,7 +198,7 @@ export function Cutaway({ active = null, flow = 0.5, heat = 0.7, load = 0.5, wet
       {showGearbox && (
         <g opacity={dim("gearbox")} style={fade} filter={glow("gearbox")}>
           <rect x="530" y={CY + 46} width="52" height={258 - CY - 46} fill={`url(#${uid}cast)`} />
-          <rect x="528" y={CY - 46} width="56" height="92" rx="6" fill={`url(#${uid}blue)`} stroke={on("gearbox") ? ART.hot : ART.blueDark} strokeWidth="1.5" />
+          <rect x="528" y={CY - 46} width="56" height="92" rx="6" fill={`url(#${uid}blue)`} stroke={on("gearbox") ? ART.brand : ART.blueDark} strokeWidth="1.5" />
           <rect x="535" y={CY - 39} width="42" height="78" rx="4" fill={ART.room} stroke={ART.blueDark} strokeWidth=".8" />
           <g fill="#c9d1da" stroke={ART.steelDark} strokeWidth="5" strokeDasharray="3.14 3.14">
             <circle cx="556" cy={CY - 12} r="17">
@@ -213,7 +213,7 @@ export function Cutaway({ active = null, flow = 0.5, heat = 0.7, load = 0.5, wet
         </g>
       )}
       {[517, 595].map((x) => (
-        <rect key={x} x={x} y={CY - 13} width="6" height="26" rx="1.5" fill={ART.yellow} stroke="#b88a00" strokeWidth=".7" />
+        <rect key={x} x={x} y={CY - 13} width="6" height="26" rx="1.5" fill={ART.yellow} stroke="#7f9c00" strokeWidth=".7" />
       ))}
 
       {/* Generator */}
@@ -249,7 +249,7 @@ export function Cutaway({ active = null, flow = 0.5, heat = 0.7, load = 0.5, wet
                 <animateMotion dur={dur} begin={begin} repeatCount="indefinite">
                   <mpath href={`#${p.id}`} />
                 </animateMotion>
-                <animate attributeName="fill" values={`${hot};#f08a3c;#4aa8e0;${ART.cool}`} keyTimes="0;.35;.75;1" dur={dur} begin={begin} repeatCount="indefinite" />
+                <animate attributeName="fill" values={`${hot};#a45be6;#3aa9d8;${ART.cool}`} keyTimes="0;.35;.75;1" dur={dur} begin={begin} repeatCount="indefinite" />
                 <animate attributeName="opacity" values="0;1;1;.8;0" keyTimes="0;.06;.7;.93;1" dur={dur} begin={begin} repeatCount="indefinite" />
               </circle>
             );

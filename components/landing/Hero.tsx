@@ -86,7 +86,7 @@ export function Hero() {
   return (
     <section className="relative overflow-hidden">
       <div className="grid-bg pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_70%_60%_at_50%_30%,black,transparent)]" />
-      <div className="pointer-events-none absolute -left-40 top-10 h-[520px] w-[520px] rounded-full bg-hot/10 blur-[140px]" />
+      <div className="pointer-events-none absolute -left-40 top-10 h-[520px] w-[520px] rounded-full bg-brand/15 blur-[140px]" />
       <div className="pointer-events-none absolute -right-40 top-40 h-[520px] w-[520px] rounded-full bg-cool/10 blur-[140px]" />
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-6 px-5 pb-6 pt-14 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:pt-20">
@@ -96,14 +96,14 @@ export function Hero() {
             IAPWS-IF97 steam properties, checked against published values
           </div>
           <h1 className="text-[2.6rem] font-semibold leading-[1.04] tracking-tight sm:text-6xl">
-            Know what your turbine <span className="steam-text">should</span> make.
+            Know what your turbine <span className="marker">should</span> make.
           </h1>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-mut">
             Enter steam conditions. Get power output, efficiency and steam demand in seconds, with wet exhaust handled exactly and every part of
             the machine shown as you type.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/register" className="btn-hot rounded-xl px-6 py-3.5 text-[15px]">
+            <Link href="/register" className="btn-spark rounded-xl px-6 py-3.5 text-[15px]">
               Start free for 14 days
             </Link>
             <a href="#live" className="btn-ghost rounded-xl px-6 py-3.5 text-[15px] font-medium">
@@ -115,7 +115,7 @@ export function Hero() {
 
         <div className="relative h-[340px] sm:h-[440px] lg:h-[600px]">
           {/* A patch of sky behind the plant, so white steam shows against the page */}
-          <div className="pointer-events-none absolute -inset-x-10 -top-6 h-[86%] bg-[radial-gradient(closest-side,#cfe2f3,#e1ecf6_55%,transparent)]" />
+          <div className="pointer-events-none absolute -inset-x-10 -top-6 h-[86%] bg-[radial-gradient(closest-side,#d6cffa,#e8e4fb_55%,transparent)]" />
           {use3d ? (
             <Fallback fallback={flat}>
               <Turbine3D live={live} className="!absolute inset-y-0 !w-auto -left-10 -right-5 xl:-right-20 cursor-grab active:cursor-grabbing" />
@@ -182,7 +182,7 @@ export function Hero() {
                   </dl>
                 </>
               ) : (
-                <p className="text-sm leading-relaxed text-warm">{result.issues[0].message}</p>
+                <p className="text-sm leading-relaxed text-brand">{result.issues[0].message}</p>
               )}
               <p className="mt-5 text-xs text-dim">Live demo at {DEMO_EFFICIENCY * 100} % overall efficiency. The full calculator lets you set every loss.</p>
             </div>

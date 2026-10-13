@@ -16,7 +16,7 @@ export default async function RegisterPage({ searchParams }: { searchParams: Pro
       footer={
         <>
           Already have an account?{" "}
-          <Link href={`/login${query}`} className="font-medium text-warm hover:underline">
+          <Link href={`/login${query}`} className="font-medium text-brand hover:underline">
             Sign in
           </Link>
         </>

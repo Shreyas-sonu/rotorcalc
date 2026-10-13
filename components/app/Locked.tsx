@@ -21,7 +21,7 @@ export function Locked({ title, text, plan, current }: { title: string; text: st
             </li>
           ))}
         </ul>
-        <Link href={`/checkout?plan=${plan.id}&cycle=yearly`} className="btn-hot mt-6 block rounded-xl py-3 text-center text-sm">
+        <Link href={`/checkout?plan=${plan.id}&cycle=yearly`} className="btn-spark mt-6 block rounded-xl py-3 text-center text-sm">
           Upgrade to {plan.name}
         </Link>
       </div>

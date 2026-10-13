@@ -66,7 +66,7 @@ export function FlowCalc({ saved }: { saved: Saved }) {
                   const t = e.target.value as Inputs["type"];
                   setV((p) => ({ ...p, type: t, etaOverall: t === "custom" ? p.etaOverall : TYPICAL[t] }));
                 }}
-                className="h-11 w-full rounded-xl border border-line bg-panel-2 px-3 text-[15px] outline-none focus:border-warm"
+                className="h-11 w-full rounded-xl border border-line bg-panel-2 px-3 text-[15px] outline-none focus:border-brand"
               >
                 <option value="impulse">Impulse (typical 60 %)</option>
                 <option value="reaction">Reaction (typical 70 %)</option>

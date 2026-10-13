@@ -39,7 +39,7 @@ function Section({ id, eyebrow, title, lead, children }: { id?: string; eyebrow:
   return (
     <section id={id} className="mx-auto max-w-7xl scroll-mt-24 px-5 py-20">
       <div className="mb-12 max-w-2xl">
-        <div className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-warm">{eyebrow}</div>
+        <div className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-brand">{eyebrow}</div>
         <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">{title}</h2>
         {lead && <p className="mt-4 text-lg leading-relaxed text-mut">{lead}</p>}
       </div>
@@ -66,7 +66,7 @@ export default function Landing() {
           </nav>
           <div className="flex items-center gap-2 text-sm">
             <Link href="/login" className="rounded-lg px-3 py-2 text-mut hover:text-ink">Sign in</Link>
-            <Link href="/register" className="btn-hot rounded-lg px-4 py-2">Start free</Link>
+            <Link href="/register" className="btn-spark rounded-lg px-4 py-2">Start free</Link>
           </div>
         </div>
       </header>
@@ -93,8 +93,8 @@ export default function Landing() {
         <Section id="calculators" eyebrow="Calculators" title="Four answers plant engineers ask for every week." lead="Each one shares the same verified steam properties, the same units and the same live diagram.">
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {CALCS.map((c) => (
-              <div key={c.title} className="card group p-6 transition-colors hover:border-warm/40">
-                <div className="mb-5 grid h-11 w-11 place-items-center rounded-xl border border-line bg-ink/[0.04] text-warm transition-colors group-hover:border-warm/50">
+              <div key={c.title} className="card group p-6 transition-colors hover:border-brand/40">
+                <div className="mb-5 grid h-11 w-11 place-items-center rounded-xl border border-line bg-ink/[0.04] text-brand transition-colors group-hover:border-brand/50">
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <path d={c.icon} />
                   </svg>
@@ -143,7 +143,7 @@ export default function Landing() {
                       <span className="font-mono font-semibold tabular-nums text-bad">−{s.error} %</span>
                     </div>
                     <div className="h-2.5 overflow-hidden rounded-full bg-line">
-                      <div className="h-full rounded-full bg-gradient-to-r from-warm to-bad" style={{ width: `${Math.max(2, (s.error / 31) * 100)}%` }} />
+                      <div className="h-full rounded-full bg-gradient-to-r from-brand to-hot" style={{ width: `${Math.max(2, (s.error / 31) * 100)}%` }} />
                     </div>
                   </div>
                 ))}
@@ -185,10 +185,10 @@ export default function Landing() {
         <Section id="faq" eyebrow="FAQ" title="Questions engineers ask first.">
           <div className="grid gap-3 lg:grid-cols-2">
             {FAQ.map((f) => (
-              <details key={f.q} className="card group p-5 open:border-warm/30">
+              <details key={f.q} className="card group p-5 open:border-brand/30">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-medium">
                   {f.q}
-                  <span className="text-warm transition-transform group-open:rotate-45">+</span>
+                  <span className="text-brand transition-transform group-open:rotate-45">+</span>
                 </summary>
                 <p className="mt-3 leading-relaxed text-mut">{f.a}</p>
               </details>
@@ -198,12 +198,12 @@ export default function Landing() {
 
         <section className="mx-auto max-w-7xl px-5 pb-24">
           <div className="card relative overflow-hidden px-6 py-16 text-center sm:px-12">
-            <div className="pointer-events-none absolute inset-x-0 -top-32 mx-auto h-64 w-2/3 rounded-full bg-hot/25 blur-[110px]" />
+            <div className="pointer-events-none absolute inset-x-0 -top-32 mx-auto h-64 w-2/3 rounded-full bg-brand/20 blur-[110px]" />
             <h2 className="relative mx-auto max-w-2xl text-3xl font-semibold tracking-tight sm:text-5xl">
-              Run your first calculation in <span className="steam-text">under a minute.</span>
+              Run your first calculation in <span className="marker">under a minute.</span>
             </h2>
             <p className="relative mx-auto mt-4 max-w-xl text-lg text-mut">Free for 14 days. No card, no steam tables, no spreadsheet.</p>
-            <Link href="/register" className="btn-hot relative mt-8 inline-block rounded-xl px-8 py-4 text-base">
+            <Link href="/register" className="btn-spark relative mt-8 inline-block rounded-xl px-8 py-4 text-base">
               Create your account
             </Link>
           </div>

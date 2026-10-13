@@ -21,7 +21,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
       footer={
         <>
           New here?{" "}
-          <Link href={`/register${query}`} className="font-medium text-warm hover:underline">
+          <Link href={`/register${query}`} className="font-medium text-brand hover:underline">
             Create an account
           </Link>
         </>
