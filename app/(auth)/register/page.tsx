@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { AuthShell } from "@/components/auth/AuthShell";
-import { RegisterForm } from "@/components/auth/Forms";
+import { GoogleButton, RegisterForm } from "@/components/auth/Forms";
+import { googleEnabled } from "@/lib/supabase/providers";
 import { TRIAL_DAYS, getPlan } from "@/lib/plans";
 
 export const metadata = { title: "Create your account" };
@@ -8,6 +9,7 @@ export const metadata = { title: "Create your account" };
 export default async function RegisterPage({ searchParams }: { searchParams: Promise<{ plan?: string; cycle?: string }> }) {
   const { plan, cycle } = await searchParams;
   const chosen = getPlan(plan);
+  const google = await googleEnabled();
   const query = plan ? `?plan=${encodeURIComponent(plan)}&cycle=${encodeURIComponent(cycle ?? "")}` : "";
   return (
     <AuthShell
@@ -22,6 +24,7 @@ export default async function RegisterPage({ searchParams }: { searchParams: Pro
         </>
       }
     >
+      {google && <GoogleButton plan={plan} cycle={cycle}>Sign up with Google</GoogleButton>}
       <RegisterForm plan={plan} cycle={cycle} />
     </AuthShell>
   );

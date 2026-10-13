@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { z } from "zod";
 import { getPlan } from "@/lib/plans";
 import { claimSession, origin } from "@/lib/session";
+import { googleEnabled } from "@/lib/supabase/providers";
 import { createClient } from "@/lib/supabase/server";
 
 export type FormState = { error?: string; fields?: Record<string, string>; values?: Record<string, string>; done?: boolean };
@@ -44,6 +45,22 @@ export async function login(_: FormState, form: FormData): Promise<FormState> {
     return { error: unconfirmed ? "Confirm your email first. Check your inbox for the link we sent." : "Email or password is not right.", values };
   }
   return finishSignIn(supabase, afterAuth(String(form.get("plan") ?? ""), String(form.get("cycle") ?? "")));
+}
+
+/** Sends the browser to Google. New and returning users take the same road; it comes back through /auth/callback. */
+export async function continueWithGoogle(form: FormData): Promise<never> {
+  if (!(await googleEnabled())) redirect("/login?reason=google_off");
+  const next = afterAuth(String(form.get("plan") ?? ""), String(form.get("cycle") ?? ""));
+  const supabase = await createClient();
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: "google",
+    options: {
+      redirectTo: `${await origin()}/auth/callback?next=${encodeURIComponent(next)}`,
+      queryParams: { prompt: "select_account" },
+    },
+  });
+  if (error || !data.url) redirect("/login?reason=google");
+  redirect(data.url);
 }
 
 export async function register(_: FormState, form: FormData): Promise<FormState> {
