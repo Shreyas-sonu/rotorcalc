@@ -80,7 +80,7 @@ export function Warnings({ items }: { items: string[] }) {
   return (
     <ul className="grid gap-2">
       {items.map((w) => (
-        <li key={w} className="flex gap-3 rounded-xl border border-warm/35 bg-warm/[0.08] px-4 py-3 text-sm leading-relaxed text-[#ffd9a3]">
+        <li key={w} className="flex gap-3 rounded-xl border border-warm/35 bg-warm/[0.08] px-4 py-3 text-sm leading-relaxed text-warm">
           <span aria-hidden="true">⚠</span>
           {w}
         </li>
@@ -92,7 +92,7 @@ export function Warnings({ items }: { items: string[] }) {
 /** Shown in place of results while the inputs cannot be calculated. */
 export function Blocked({ issues }: { issues: { field: string; message: string }[] }) {
   return (
-    <div className="rounded-xl border border-line bg-white/[0.02] p-5">
+    <div className="rounded-xl border border-line bg-ink/[0.02] p-5">
       <div className="text-sm font-semibold">Fix {issues.length === 1 ? "one thing" : `${issues.length} things`} to see the result</div>
       <ul className="mt-3 grid gap-2 text-sm leading-relaxed text-mut">
         {issues.map((i) => (

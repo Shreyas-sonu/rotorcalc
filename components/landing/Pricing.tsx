@@ -9,7 +9,7 @@ export function Pricing({ signedIn = false, trialUsed = false, current }: { sign
   const [cycle, setCycle] = useState<Cycle>("yearly");
   return (
     <div>
-      <div className="mx-auto mb-10 flex w-max items-center gap-1 rounded-full border border-line bg-white/[0.03] p-1 text-sm">
+      <div className="mx-auto mb-10 flex w-max items-center gap-1 rounded-full border border-line bg-panel p-1 text-sm shadow-sm">
         {(["monthly", "yearly"] as const).map((c) => (
           <button
             key={c}
@@ -29,8 +29,8 @@ export function Pricing({ signedIn = false, trialUsed = false, current }: { sign
           const perMonth = cycle === "yearly" ? Math.round(plan.yearly / 12) : plan.monthly;
           const target = signedIn ? `/checkout?plan=${plan.id}&cycle=${cycle}` : `/register?plan=${plan.id}&cycle=${cycle}`;
           return (
-            <div key={plan.id} className={`card relative flex flex-col p-7 ${plan.highlight ? "border-hot/60 shadow-[0_0_60px_-20px_var(--color-hot)]" : ""}`}>
-              {plan.highlight && <span className="steam-line absolute -top-3 left-7 rounded-full px-3 py-1 text-xs font-semibold text-[#1a0a02]">Most popular</span>}
+            <div key={plan.id} className={`card relative flex flex-col p-7 ${plan.highlight ? "border-hot/60 shadow-[0_24px_60px_-28px_var(--color-hot)]" : ""}`}>
+              {plan.highlight && <span className="absolute -top-3 left-7 rounded-full bg-hot px-3 py-1 text-xs font-semibold text-white">Most popular</span>}
               <h3 className="text-lg font-semibold">{plan.name}</h3>
               <p className="mt-1 min-h-10 text-sm text-mut">{plan.blurb}</p>
               <div className="mt-5 flex items-baseline gap-1.5">

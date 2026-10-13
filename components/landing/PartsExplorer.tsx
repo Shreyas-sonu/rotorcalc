@@ -29,7 +29,7 @@ export function PartsExplorer() {
               onClick={() => setActive(p.id)}
               aria-pressed={active === p.id}
               className={`flex w-full items-center gap-4 rounded-xl border px-4 py-3 text-left transition-colors ${
-                active === p.id ? "border-warm/50 bg-warm/[0.07]" : "border-transparent hover:bg-white/[0.03]"
+                active === p.id ? "border-warm/50 bg-warm/[0.07]" : "border-transparent hover:bg-ink/[0.04]"
               }`}
             >
               <span className={`font-mono text-xs tabular-nums ${active === p.id ? "text-warm" : "text-dim"}`}>0{i + 1}</span>

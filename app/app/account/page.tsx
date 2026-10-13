@@ -10,7 +10,7 @@ import { createClient } from "@/lib/supabase/server";
 export const metadata = { title: "Account" };
 
 const day = (iso: string) => new Date(iso).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" });
-const box = "h-11 w-full rounded-xl border border-line bg-white/[0.03] px-3.5 text-[15px] outline-none focus:border-warm";
+const box = "h-11 w-full rounded-xl border border-line bg-ink/[0.03] px-3.5 text-[15px] outline-none focus:border-warm";
 
 export default async function AccountPage({ searchParams }: { searchParams: Promise<{ saved?: string }> }) {
   const access = await requirePlan();

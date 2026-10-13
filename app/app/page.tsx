@@ -13,7 +13,7 @@ export default async function PowerPage({ searchParams }: { searchParams: Promis
   return (
     <>
       {started && (
-        <div className="mb-6 flex items-center gap-3 rounded-xl border border-ok/40 bg-ok/10 px-4 py-3 text-sm text-[#a6f0cf]">
+        <div className="mb-6 flex items-center gap-3 rounded-xl border border-ok/40 bg-ok/10 px-4 py-3 text-sm text-ok">
           <span aria-hidden="true">✓</span>
           {started.id === "trial" ? "Your free trial has started." : `You are on the ${started.name} plan.`} Change any number below and watch the turbine respond.
         </div>

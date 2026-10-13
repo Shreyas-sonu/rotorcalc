@@ -39,7 +39,7 @@ export function TextField({
           required={required}
           aria-invalid={!!error}
           aria-describedby={error ? `${name}-error` : undefined}
-          className={`h-12 w-full rounded-xl border bg-white/[0.03] px-4 text-[15px] outline-none transition-colors placeholder:text-dim focus:border-warm focus:bg-white/[0.05] ${
+          className={`h-12 w-full rounded-xl border bg-ink/[0.03] px-4 text-[15px] outline-none transition-colors placeholder:text-dim focus:border-warm focus:bg-panel ${
             error ? "border-bad" : "border-line"
           } ${isPassword ? "pr-16" : ""}`}
         />
@@ -70,7 +70,7 @@ export function Submit({ children, className = "" }: { children: React.ReactNode
 }
 
 export function Notice({ tone = "info", children }: { tone?: "info" | "bad" | "ok"; children: React.ReactNode }) {
-  const style = tone === "bad" ? "border-bad/40 bg-bad/10 text-[#ffb4b4]" : tone === "ok" ? "border-ok/40 bg-ok/10 text-[#a6f0cf]" : "border-warm/40 bg-warm/10 text-[#ffd9a3]";
+  const style = tone === "bad" ? "border-bad/40 bg-bad/10 text-bad" : tone === "ok" ? "border-ok/40 bg-ok/10 text-ok" : "border-warm/40 bg-warm/10 text-warm";
   return (
     <div role={tone === "bad" ? "alert" : "status"} className={`rounded-xl border px-4 py-3 text-sm leading-relaxed ${style}`}>
       {children}

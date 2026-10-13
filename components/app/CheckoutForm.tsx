@@ -5,7 +5,7 @@ import { pay, type PayState } from "@/app/(onboarding)/actions";
 import { Notice, Submit } from "@/components/auth/Form";
 
 const START: PayState = {};
-const box = "h-12 w-full rounded-xl border border-line bg-white/[0.03] px-4 font-mono text-[15px] outline-none focus:border-warm";
+const box = "h-12 w-full rounded-xl border border-line bg-ink/[0.03] px-4 font-mono text-[15px] outline-none focus:border-warm";
 
 /** Pretend payment form. The card and UPI boxes have no `name`, so nothing typed in them is ever sent. */
 export function CheckoutForm({ plan, cycle, isTrial, payLabel }: { plan: string; cycle: string; isTrial: boolean; payLabel: string }) {
@@ -19,9 +19,9 @@ export function CheckoutForm({ plan, cycle, isTrial, payLabel }: { plan: string;
       {state.error && <Notice tone="bad">{state.error}</Notice>}
       {!isTrial && (
         <>
-          <div className="grid grid-cols-2 gap-2 rounded-xl border border-line bg-white/[0.02] p-1 text-sm">
+          <div className="grid grid-cols-2 gap-2 rounded-xl border border-line bg-ink/[0.02] p-1 text-sm">
             {(["card", "upi"] as const).map((m) => (
-              <button key={m} type="button" onClick={() => setMethod(m)} aria-pressed={method === m} className={`rounded-lg py-2.5 transition-colors ${method === m ? "bg-white/10 font-medium text-ink" : "text-mut hover:text-ink"}`}>
+              <button key={m} type="button" onClick={() => setMethod(m)} aria-pressed={method === m} className={`rounded-lg py-2.5 transition-colors ${method === m ? "bg-panel shadow-sm font-medium text-ink" : "text-mut hover:text-ink"}`}>
                 {m === "card" ? "Card" : "UPI"}
               </button>
             ))}

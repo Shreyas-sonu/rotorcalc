@@ -67,8 +67,8 @@ export default async function CheckoutPage({ searchParams }: { searchParams: Pro
 
         <section className="card p-7">
           {payments.testMode && !isTrial && (
-            <div className="mb-6 flex items-center gap-3 rounded-xl border border-warm/40 bg-warm/10 px-4 py-3 text-sm text-[#ffd9a3]">
-              <span className="rounded bg-warm px-1.5 py-0.5 text-xs font-bold text-[#1a0a02]">TEST MODE</span>
+            <div className="mb-6 flex items-center gap-3 rounded-xl border border-warm/40 bg-warm/10 px-4 py-3 text-sm text-warm">
+              <span className="rounded bg-warm px-1.5 py-0.5 text-xs font-bold text-white">TEST MODE</span>
               No money is taken. Use the sample details as they are.
             </div>
           )}

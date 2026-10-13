@@ -36,7 +36,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
             >
               {isTrial ? `Trial · ${daysLeft} of ${TRIAL_DAYS} days left · Upgrade` : `${access.plan.name} plan`}
             </Link>
-            <Link href="/app/account" aria-label="Account" className="grid h-9 w-9 place-items-center rounded-full border border-line bg-white/[0.04] text-xs font-semibold hover:border-warm/60">
+            <Link href="/app/account" aria-label="Account" className="grid h-9 w-9 place-items-center rounded-full border border-line bg-ink/[0.04] text-xs font-semibold hover:border-warm/60">
               {initials}
             </Link>
             <form action={signOut}>

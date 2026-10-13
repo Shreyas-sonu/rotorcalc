@@ -20,7 +20,7 @@ export const pct = (v: string) => Number.parseFloat(v) / 100;
 const tidy = (n: number) => String(Number(n.toPrecision(5)));
 
 const inputBox =
-  "h-11 w-full min-w-0 rounded-l-xl border border-r-0 bg-white/[0.03] px-3.5 font-mono text-[15px] tabular-nums outline-none transition-colors focus:border-warm focus:bg-white/[0.06]";
+  "h-11 w-full min-w-0 rounded-l-xl border border-r-0 bg-ink/[0.03] px-3.5 font-mono text-[15px] tabular-nums outline-none transition-colors focus:border-warm focus:bg-panel";
 
 function Shell({ id, label, hint, error, children }: { id: string; label: string; hint?: string; error?: string; children: React.ReactNode }) {
   return (
@@ -171,7 +171,7 @@ export function PercentField({
 
 export function Segmented<T extends string>({ value, onChange, options, label }: { value: T; onChange: (v: T) => void; options: { id: T; label: string; locked?: boolean }[]; label: string }) {
   return (
-    <div role="group" aria-label={label} className="inline-flex rounded-xl border border-line bg-white/[0.02] p-1 text-sm">
+    <div role="group" aria-label={label} className="inline-flex rounded-xl border border-line bg-ink/[0.02] p-1 text-sm">
       {options.map((o) => (
         <button
           key={o.id}

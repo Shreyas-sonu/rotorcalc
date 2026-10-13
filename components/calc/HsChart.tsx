@@ -63,42 +63,42 @@ export function HsChart({ p1, p2, inlet, ideal, actual }: { p1: number; p2: numb
         </defs>
         {hTicks.map((h) => (
           <g key={h}>
-            <path d={`M${PAD.l} ${y(h)}H${W - PAD.r}`} stroke="#1e2a3c" />
-            <text x={PAD.l - 8} y={y(h) + 4} textAnchor="end" fontSize="10" fill="#5b6b80">
+            <path d={`M${PAD.l} ${y(h)}H${W - PAD.r}`} stroke="#dbe2ea" />
+            <text x={PAD.l - 8} y={y(h) + 4} textAnchor="end" fontSize="10" fill="#6d7b8f">
               {h}
             </text>
           </g>
         ))}
         {sTicks.map((s) => (
           <g key={s}>
-            <path d={`M${x(s)} ${PAD.t}V${H - PAD.b}`} stroke="#1e2a3c" />
-            <text x={x(s)} y={H - PAD.b + 15} textAnchor="middle" fontSize="10" fill="#5b6b80">
+            <path d={`M${x(s)} ${PAD.t}V${H - PAD.b}`} stroke="#dbe2ea" />
+            <text x={x(s)} y={H - PAD.b + 15} textAnchor="middle" fontSize="10" fill="#6d7b8f">
               {s}
             </text>
           </g>
         ))}
-        <text x={W - PAD.r} y={H - 4} textAnchor="end" fontSize="10" fill="#8a9ab0">
+        <text x={W - PAD.r} y={H - 4} textAnchor="end" fontSize="10" fill="#4a5a70">
           entropy s, kJ/(kg·K)
         </text>
-        <text x={PAD.l + 6} y={PAD.t + 12} fontSize="10" fill="#8a9ab0">
+        <text x={PAD.l + 6} y={PAD.t + 12} fontSize="10" fill="#4a5a70">
           enthalpy h, kJ/kg
         </text>
 
         <g clipPath="url(#hs-clip)">
-          <path d={`${line(data.dome)} L${x(data.dome[data.dome.length - 1].s)} ${H} L${x(data.dome[0].s)} ${H}Z`} fill="#45cfff" fillOpacity=".06" />
-          <path d={line(data.dome)} fill="none" stroke="#45cfff" strokeOpacity=".7" strokeWidth="1.4" />
-          <path d={line(data.hi)} fill="none" stroke="#ff7a2f" strokeOpacity=".65" strokeWidth="1.2" />
-          <path d={line(data.lo)} fill="none" stroke="#45cfff" strokeOpacity=".65" strokeWidth="1.2" />
-          <path d={`M${x(inlet.s)} ${y(inlet.h)}L${x(ideal.s)} ${y(ideal.h)}`} stroke="#e9eff7" strokeWidth="1.4" strokeDasharray="5 4" />
-          {actual && <path d={`M${x(inlet.s)} ${y(inlet.h)}L${x(actual.s)} ${y(actual.h)}`} stroke="#ffb347" strokeWidth="2.4" strokeLinecap="round" />}
-          <circle cx={x(ideal.s)} cy={y(ideal.h)} r="4" fill="#060a11" stroke="#e9eff7" strokeWidth="1.5" />
-          {actual && <circle cx={x(actual.s)} cy={y(actual.h)} r="4.5" fill="#45cfff" />}
-          <circle cx={x(inlet.s)} cy={y(inlet.h)} r="5" fill="#ff7a2f" />
+          <path d={`${line(data.dome)} L${x(data.dome[data.dome.length - 1].s)} ${H} L${x(data.dome[0].s)} ${H}Z`} fill="#0b7ec2" fillOpacity=".06" />
+          <path d={line(data.dome)} fill="none" stroke="#0b7ec2" strokeOpacity=".7" strokeWidth="1.4" />
+          <path d={line(data.hi)} fill="none" stroke="#e8590c" strokeOpacity=".65" strokeWidth="1.2" />
+          <path d={line(data.lo)} fill="none" stroke="#0b7ec2" strokeOpacity=".65" strokeWidth="1.2" />
+          <path d={`M${x(inlet.s)} ${y(inlet.h)}L${x(ideal.s)} ${y(ideal.h)}`} stroke="#0f1b2d" strokeWidth="1.4" strokeDasharray="5 4" />
+          {actual && <path d={`M${x(inlet.s)} ${y(inlet.h)}L${x(actual.s)} ${y(actual.h)}`} stroke="#c2620a" strokeWidth="2.4" strokeLinecap="round" />}
+          <circle cx={x(ideal.s)} cy={y(ideal.h)} r="4" fill="#ffffff" stroke="#0f1b2d" strokeWidth="1.5" />
+          {actual && <circle cx={x(actual.s)} cy={y(actual.h)} r="4.5" fill="#0b7ec2" />}
+          <circle cx={x(inlet.s)} cy={y(inlet.h)} r="5" fill="#e8590c" />
         </g>
-        <text x={x(inlet.s) + 9} y={y(inlet.h) - 6} fontSize="11" fill="#e9eff7">
+        <text x={x(inlet.s) + 9} y={y(inlet.h) - 6} fontSize="11" fill="#0f1b2d">
           Inlet
         </text>
-        <text x={W - PAD.r - 6} y={y(data.dome[0].h) + 16} textAnchor="end" fontSize="10" fill="#45cfff" opacity=".8">
+        <text x={W - PAD.r - 6} y={y(data.dome[0].h) + 16} textAnchor="end" fontSize="10" fill="#0b7ec2" opacity=".8">
           wet steam below this line
         </text>
       </svg>

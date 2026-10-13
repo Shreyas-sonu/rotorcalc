@@ -20,7 +20,7 @@ const DEFAULTS: Inputs = {
   Tfw: q(105, "°C"),
 };
 
-const small = "h-10 w-full min-w-0 rounded-lg border border-line bg-white/[0.03] px-3 font-mono text-sm tabular-nums outline-none focus:border-warm";
+const small = "h-10 w-full min-w-0 rounded-lg border border-line bg-ink/[0.03] px-3 font-mono text-sm tabular-nums outline-none focus:border-warm";
 
 export function BoilerCalc({ saved }: { saved: Saved }) {
   const [v, setV] = useState<Inputs>(() => ({ ...DEFAULTS, ...((saved?.inputs as Partial<Inputs>) ?? {}) }));

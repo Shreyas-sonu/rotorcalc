@@ -5,7 +5,7 @@ import { inr, type Plan } from "@/lib/plans";
 export function Locked({ title, text, plan, current }: { title: string; text: string; plan: Plan; current: string }) {
   return (
     <div className="mx-auto max-w-2xl py-10 text-center">
-      <div className="mx-auto mb-6 grid h-16 w-16 place-items-center rounded-2xl border border-line bg-white/[0.03] text-2xl">🔒</div>
+      <div className="mx-auto mb-6 grid h-16 w-16 place-items-center rounded-2xl border border-line bg-ink/[0.03] text-2xl">🔒</div>
       <h1 className="text-3xl font-semibold tracking-tight">{title}</h1>
       <p className="mx-auto mt-3 max-w-lg text-lg text-mut">{text}</p>
       <div className="card mx-auto mt-8 max-w-md p-6 text-left">

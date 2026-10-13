@@ -103,7 +103,7 @@ export function PowerCalc({ saved, advancedAllowed }: { saved: Saved; advancedAl
       form={
         <>
           {!advancedAllowed && (
-            <p className="rounded-xl border border-line bg-white/[0.02] px-4 py-3 text-sm text-mut">
+            <p className="rounded-xl border border-line bg-ink/[0.02] px-4 py-3 text-sm text-mut">
               Advanced mode sets each loss separately (blades, gearbox, generator, valve, glands). It is part of the Pro plan.{" "}
               <a href="/plans" className="font-medium text-warm hover:underline">
                 See plans

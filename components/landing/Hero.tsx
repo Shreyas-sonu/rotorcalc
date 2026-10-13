@@ -86,13 +86,13 @@ export function Hero() {
   return (
     <section className="relative overflow-hidden">
       <div className="grid-bg pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_70%_60%_at_50%_30%,black,transparent)]" />
-      <div className="pointer-events-none absolute -left-40 top-10 h-[520px] w-[520px] rounded-full bg-hot/20 blur-[140px]" />
-      <div className="pointer-events-none absolute -right-40 top-40 h-[520px] w-[520px] rounded-full bg-cool/15 blur-[140px]" />
+      <div className="pointer-events-none absolute -left-40 top-10 h-[520px] w-[520px] rounded-full bg-hot/10 blur-[140px]" />
+      <div className="pointer-events-none absolute -right-40 top-40 h-[520px] w-[520px] rounded-full bg-cool/10 blur-[140px]" />
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-6 px-5 pb-6 pt-14 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:pt-20">
         <div className="rise">
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.03] px-3 py-1.5 text-xs text-mut">
-            <span className="h-1.5 w-1.5 rounded-full bg-ok shadow-[0_0_10px_var(--color-ok)]" />
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-line bg-panel px-3 py-1.5 text-xs text-mut shadow-sm">
+            <span className="h-1.5 w-1.5 rounded-full bg-ok" />
             IAPWS-IF97 steam properties, checked against published values
           </div>
           <h1 className="text-[2.6rem] font-semibold leading-[1.04] tracking-tight sm:text-6xl">
@@ -113,10 +113,12 @@ export function Hero() {
           <p className="mt-4 text-sm text-dim">No card needed. Works in any pressure, temperature and flow unit.</p>
         </div>
 
-        <div className="relative h-[340px] sm:h-[440px] lg:h-[540px]">
+        <div className="relative h-[340px] sm:h-[440px] lg:h-[600px]">
+          {/* A patch of sky behind the plant, so white steam shows against the page */}
+          <div className="pointer-events-none absolute -inset-x-10 -top-6 h-[86%] bg-[radial-gradient(closest-side,#cfe2f3,#e1ecf6_55%,transparent)]" />
           {use3d ? (
             <Fallback fallback={flat}>
-              <Turbine3D live={live} className="!absolute inset-0 cursor-grab active:cursor-grabbing" />
+              <Turbine3D live={live} className="!absolute inset-y-0 !w-auto -left-10 -right-5 xl:-right-20 cursor-grab active:cursor-grabbing" />
             </Fallback>
           ) : (
             <div className="flex h-full items-center">{flat}</div>

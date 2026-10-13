@@ -74,7 +74,7 @@ export default function Landing() {
       <main className="flex-1">
         <Hero />
 
-        <div className="border-y border-line bg-white/[0.015]">
+        <div className="border-y border-line bg-panel">
           <dl className="mx-auto grid max-w-7xl grid-cols-2 gap-y-8 px-5 py-10 lg:grid-cols-4">
             {[
               ["IF97", "industrial steam standard"],
@@ -94,7 +94,7 @@ export default function Landing() {
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {CALCS.map((c) => (
               <div key={c.title} className="card group p-6 transition-colors hover:border-warm/40">
-                <div className="mb-5 grid h-11 w-11 place-items-center rounded-xl border border-line bg-white/[0.04] text-warm transition-colors group-hover:border-warm/50">
+                <div className="mb-5 grid h-11 w-11 place-items-center rounded-xl border border-line bg-ink/[0.04] text-warm transition-colors group-hover:border-warm/50">
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <path d={c.icon} />
                   </svg>
