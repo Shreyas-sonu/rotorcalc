@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { signOut } from "@/app/(auth)/actions";
 import { Logo } from "@/components/brand/Logo";
+import { SignOutButton } from "@/components/ui/SignOutButton";
 
 const STEPS = ["Account", "Plan", "Payment", "Calculate"];
 
@@ -31,12 +31,10 @@ export function OnboardingShell({ step, email, children }: { step: number; email
             );
           })}
         </ol>
-        <form action={signOut} className="flex items-center gap-3 text-sm">
+        <div className="flex items-center gap-3 text-sm">
           {email && <span className="hidden text-dim sm:inline">{email}</span>}
-          <button type="submit" className="btn-ghost rounded-lg px-3 py-1.5 text-mut">
-            Sign out
-          </button>
-        </form>
+          <SignOutButton className="btn-ghost rounded-lg px-3 py-1.5 text-mut" />
+        </div>
       </header>
       <main className="relative mx-auto w-full max-w-7xl flex-1 px-5 pb-20 pt-6">{children}</main>
     </div>

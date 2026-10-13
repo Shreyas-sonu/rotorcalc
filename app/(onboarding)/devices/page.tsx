@@ -1,3 +1,4 @@
+import { ConfirmSubmit } from "@/components/ui/Confirm";
 import { redirect } from "next/navigation";
 import { removeDevice } from "@/app/(auth)/actions";
 import { OnboardingShell } from "@/components/app/OnboardingShell";
@@ -34,9 +35,18 @@ export default async function DevicesPage() {
               </div>
               <form action={removeDevice}>
                 <input type="hidden" name="id" value={d.id} />
-                <button type="submit" className="btn-ghost rounded-lg px-4 py-2 text-sm font-medium">
+                <ConfirmSubmit
+                  ask={{
+                    title: `Remove ${d.label}?`,
+                    text: "That device is signed out and this one takes its place.",
+                    confirmLabel: "Remove and sign in here",
+                    tone: "danger",
+                    icon: "device",
+                  }}
+                  className="btn-ghost rounded-lg px-4 py-2 text-sm font-medium"
+                >
                   Remove and sign in here
-                </button>
+                </ConfirmSubmit>
               </form>
             </li>
           ))}

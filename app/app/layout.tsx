@@ -1,7 +1,7 @@
-import Link from "next/link";
-import { signOut } from "@/app/(auth)/actions";
 import { AppNav } from "@/components/app/AppNav";
 import { Logo } from "@/components/brand/Logo";
+import { GuardedLink as Link } from "@/components/ui/Confirm";
+import { SignOutButton } from "@/components/ui/SignOutButton";
 import { requirePlan } from "@/lib/access";
 import { TRIAL_DAYS } from "@/lib/plans";
 
@@ -39,11 +39,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
             <Link href="/app/account" aria-label="Account" className="grid h-9 w-9 place-items-center rounded-full border border-line bg-ink/[0.04] text-xs font-semibold hover:border-brand/60">
               {initials}
             </Link>
-            <form action={signOut}>
-              <button type="submit" className="rounded-lg px-2 py-1.5 text-mut hover:text-ink">
-                Sign out
-              </button>
-            </form>
+            <SignOutButton className="rounded-lg px-2 py-1.5 text-mut hover:bg-ink/[0.05] hover:text-ink" />
           </div>
         </div>
       </header>

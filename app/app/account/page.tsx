@@ -1,3 +1,4 @@
+import { ConfirmSubmit } from "@/components/ui/Confirm";
 import { cookies } from "next/headers";
 import Link from "next/link";
 import { removeDevice } from "@/app/(auth)/actions";
@@ -89,9 +90,18 @@ export default async function AccountPage({ searchParams }: { searchParams: Prom
                   <form action={removeDevice}>
                     <input type="hidden" name="id" value={d.id} />
                     <input type="hidden" name="next" value="account" />
-                    <button type="submit" className="btn-ghost rounded-lg px-4 py-2 text-sm text-mut">
+                    <ConfirmSubmit
+                      ask={{
+                        title: `Remove ${d.label}?`,
+                        text: "That device is signed out and will need to sign in again. It frees one of your two device slots.",
+                        confirmLabel: "Remove device",
+                        tone: "danger",
+                        icon: "device",
+                      }}
+                      className="btn-ghost rounded-lg px-4 py-2 text-sm text-mut"
+                    >
                       Remove
-                    </button>
+                    </ConfirmSubmit>
                   </form>
                 )}
               </li>

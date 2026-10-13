@@ -2,20 +2,37 @@
 
 import { useState, useTransition } from "react";
 import { saveCalculation } from "@/app/app/actions";
+import { useUnsaved } from "@/components/ui/Confirm";
 import type { CalculatorId } from "@/lib/plans";
 
 export type Saved = { id: string; name: string; inputs: Record<string, unknown> } | null;
 
 /** Name box and Save button. Saving again updates the same record. */
-function SaveBar({ kind, saved, inputs, summary, canSave }: { kind: CalculatorId; saved: Saved; inputs: Record<string, unknown>; summary: string; canSave: boolean }) {
+function SaveBar({
+  kind,
+  saved,
+  inputs,
+  summary,
+  canSave,
+  onSaved,
+}: {
+  kind: CalculatorId;
+  saved: Saved;
+  inputs: Record<string, unknown>;
+  summary: string;
+  canSave: boolean;
+  onSaved: (snapshot: string) => void;
+}) {
   const [name, setName] = useState(saved?.name ?? "");
   const [id, setId] = useState(saved?.id);
   const [note, setNote] = useState<{ tone: "ok" | "bad"; text: string } | null>(null);
   const [pending, start] = useTransition();
   const save = () =>
     start(async () => {
+      const snapshot = JSON.stringify(inputs);
       const result = await saveCalculation({ id, kind, name, summary, inputs });
       if (result.ok) {
+        onSaved(snapshot);
         setId(result.id);
         setNote({ tone: "ok", text: "Saved" });
       } else setNote({ tone: "bad", text: result.error ?? "Could not save." });
@@ -74,6 +91,10 @@ export function Workspace({
   summary: string;
   canSave: boolean;
 }) {
+  // Unsaved work: the inputs differ from what was loaded or last saved. Leaving then asks first.
+  const snapshot = JSON.stringify(inputs);
+  const [baseline, setBaseline] = useState(snapshot);
+  useUnsaved(snapshot !== baseline);
   return (
     <div>
       <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
@@ -94,7 +115,7 @@ export function Workspace({
           <div className="card xl:min-h-0 xl:flex-1 xl:overflow-y-auto">
             <div className="grid gap-6 p-5 sm:p-7">
               {results}
-              <SaveBar kind={kind} saved={saved} inputs={inputs} summary={summary} canSave={canSave} />
+              <SaveBar kind={kind} saved={saved} inputs={inputs} summary={summary} canSave={canSave} onSaved={setBaseline} />
             </div>
           </div>
         </div>

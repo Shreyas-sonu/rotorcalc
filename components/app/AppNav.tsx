@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { GuardedLink as Link } from "@/components/ui/Confirm";
 import { CALCULATORS, type CalculatorId } from "@/lib/plans";
 
 /** Calculator tabs. Calculators outside the plan stay visible with a lock, so the upgrade path is clear. */

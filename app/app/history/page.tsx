@@ -1,3 +1,4 @@
+import { ConfirmSubmit } from "@/components/ui/Confirm";
 import Link from "next/link";
 import { deleteCalculation } from "@/app/app/actions";
 import { requirePlan } from "@/lib/access";
@@ -61,9 +62,19 @@ export default async function HistoryPage() {
                   )}
                   <form action={deleteCalculation}>
                     <input type="hidden" name="id" value={r.id} />
-                    <button type="submit" className="rounded-lg px-3 py-2 text-sm text-dim hover:text-bad" aria-label={`Delete ${r.name}`}>
+                    <ConfirmSubmit
+                      ask={{
+                        title: `Delete "${r.name}"?`,
+                        text: "The saved calculation is removed for good. This cannot be undone.",
+                        confirmLabel: "Delete",
+                        tone: "danger",
+                        icon: "trash",
+                      }}
+                      className="rounded-lg px-3 py-2 text-sm text-dim hover:text-bad"
+                      aria-label={`Delete ${r.name}`}
+                    >
                       Delete
-                    </button>
+                    </ConfirmSubmit>
                   </form>
                 </div>
               </li>

@@ -104,6 +104,26 @@ body {
     cursor: not-allowed;
   }
 
+  /* Same build as the main button, for actions that throw something away. */
+  .btn-danger {
+    background: var(--color-bad);
+    color: #fff;
+    font-weight: 650;
+    border: 1.5px solid var(--color-ink);
+    box-shadow: 3px 3px 0 var(--color-ink);
+    transition:
+      transform 0.12s ease,
+      box-shadow 0.12s ease;
+  }
+  .btn-danger:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 5px 5px 0 var(--color-ink);
+  }
+  .btn-danger:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 var(--color-ink);
+  }
+
   .btn-ghost {
     border: 1.5px solid var(--color-line);
     background: var(--color-panel);
