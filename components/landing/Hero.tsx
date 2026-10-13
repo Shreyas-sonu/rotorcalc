@@ -109,7 +109,7 @@ export function Hero() {
           <p className="mt-4 text-sm text-dim">No card needed. Works in any pressure, temperature and flow unit.</p>
         </div>
 
-        <div className="relative h-[340px] sm:h-[440px] lg:h-[600px]">
+        <div className="relative aspect-[796/400] sm:aspect-auto sm:h-[440px] lg:h-[600px]">
           {/* A patch of sky behind the plant, so white steam shows against the page */}
           <div className="pointer-events-none absolute -inset-x-10 -top-6 h-[86%] bg-[radial-gradient(closest-side,#d6cffa,#e8e4fb_55%,transparent)]" />
           {use3d ? (

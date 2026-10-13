@@ -22,9 +22,9 @@ export default async function AppLayout({ children }: { children: React.ReactNod
   return (
     <div className="flex min-h-screen flex-col">
       <header className="no-print sticky top-0 z-40 border-b border-line bg-bg/80 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-[1500px] items-center justify-between gap-4 px-5">
-          <div className="flex min-w-0 items-center gap-6">
-            <Link href="/app" aria-label="Calculators home" className="shrink-0">
+        <div className="mx-auto flex max-w-[1500px] flex-wrap items-center lg:flex-nowrap justify-between gap-x-4 px-5">
+          <div className="contents lg:flex lg:min-w-0 lg:items-center lg:gap-6">
+            <Link href="/app" aria-label="Calculators home" className="shrink-0 py-3 lg:py-0">
               <Logo size={24} />
             </Link>
             <AppNav allowed={access.plan.calculators} />

@@ -70,7 +70,7 @@ export function Cutaway({ active = null, flow = 0.5, heat = 0.7, load = 0.5, wet
   });
   const inside = `M180 ${top(180)} L454 ${top(454)} V${bot(454)} L180 ${bot(180)}Z`;
   const shell = `M172 ${top(172) - WALL} L462 ${top(462) - WALL} V${bot(462) + WALL} L172 ${bot(172) + WALL}Z ${inside}`;
-  const inlet = "M0 70 H118 Q150 70 158 104 L166 140";
+  const inlet = "M-16 70 H118 Q150 70 158 104 L166 140";
 
   const tag = (part: Part, x: number, y: number, anchor: "start" | "middle" | "end" = "start") => (
     <g opacity={dim(part)} style={fade}>
@@ -87,7 +87,7 @@ export function Cutaway({ active = null, flow = 0.5, heat = 0.7, load = 0.5, wet
 
   return (
     <svg
-      viewBox="0 0 780 400"
+      viewBox="-16 0 796 400"
       className={className}
       role="img"
       aria-label="Animated cross-section of a steam turbine: steam enters at the inlet valve, expands through the blade stages, leaves at the exhaust, and the shaft drives a generator."

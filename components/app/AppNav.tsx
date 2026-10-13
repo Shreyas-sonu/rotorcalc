@@ -12,7 +12,7 @@ export function AppNav({ allowed }: { allowed: CalculatorId[] }) {
     { href: "/app/history", label: "Saved", locked: false },
   ];
   return (
-    <nav aria-label="Calculators" className="no-print -mx-1 flex gap-1 overflow-x-auto px-1">
+    <nav aria-label="Calculators" className="no-print order-last -mx-1 flex basis-full gap-1 overflow-x-auto px-1 lg:order-none lg:basis-auto">
       {items.map((i) => {
         const current = i.href === "/app" ? path === "/app" : path.startsWith(i.href);
         return (
@@ -20,7 +20,7 @@ export function AppNav({ allowed }: { allowed: CalculatorId[] }) {
             key={i.href}
             href={i.href}
             aria-current={current ? "page" : undefined}
-            className={`relative whitespace-nowrap px-3.5 py-4 text-sm transition-colors ${current ? "font-medium text-ink" : "text-mut hover:text-ink"}`}
+            className={`relative whitespace-nowrap px-3.5 py-3 text-sm lg:py-4 transition-colors ${current ? "font-medium text-ink" : "text-mut hover:text-ink"}`}
           >
             {i.label}
             {i.locked && <span className="ml-1.5 text-xs opacity-60">🔒</span>}
