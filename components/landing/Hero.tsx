@@ -63,7 +63,7 @@ export function Hero() {
 
   useEffect(() => {
     // 3D only where it will run well: a real pointer, a wide screen, WebGL, and no reduced-motion preference.
-    const wide = window.matchMedia("(min-width: 900px)").matches;
+    const wide = window.matchMedia("(min-width: 900px)");
     const calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let webgl = false;
     try {
@@ -71,14 +71,18 @@ export function Hero() {
     } catch {
       webgl = false;
     }
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- capability is only known in the browser
-    setUse3d(wide && !calm && webgl);
+    const pick = () => setUse3d(wide.matches && !calm && webgl);
+    pick();
+    wide.addEventListener("change", pick);
     const onScroll = () => {
       live.current.open = Math.min(1, Math.max(0, (window.scrollY - 40) / 420));
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      wide.removeEventListener("change", pick);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   const flat = <Cutaway flow={flow} heat={heat} load={load} wet={wet} className="h-full w-full" />;
@@ -89,7 +93,7 @@ export function Hero() {
       <div className="pointer-events-none absolute -left-40 top-10 h-[520px] w-[520px] rounded-full bg-brand/15 blur-[140px]" />
       <div className="pointer-events-none absolute -right-40 top-40 h-[520px] w-[520px] rounded-full bg-cool/10 blur-[140px]" />
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-6 px-5 pb-6 pt-14 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:pt-20">
+      <div className="relative mx-auto grid max-w-7xl items-center gap-6 px-5 pb-9 pt-14 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:pt-20">
         <div className="rise">
           <h1 className="text-[2.6rem] font-semibold leading-[1.04] tracking-tight sm:text-6xl">
             Know what your turbine <span className="marker">should</span> make.
@@ -119,7 +123,7 @@ export function Hero() {
           ) : (
             <div className="relative flex h-full items-center">{flat}</div>
           )}
-          {use3d && <div className="pointer-events-none absolute bottom-3 right-4 text-xs text-dim">Drag to rotate · scroll to lift the casing</div>}
+          {use3d && <div className="pointer-events-none absolute right-4 top-full pt-1.5 text-xs text-dim">Drag to rotate · scroll to lift the casing</div>}
         </div>
       </div>
 

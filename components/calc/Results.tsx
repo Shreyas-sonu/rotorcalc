@@ -42,7 +42,7 @@ export function Chain({ title = "Where the power goes", steps }: { title?: strin
                 {s.label}
                 {s.note && <span className="ml-2 text-xs text-dim">{s.note}</span>}
               </span>
-              <span className="font-mono tabular-nums">
+              <span className="shrink-0 whitespace-nowrap font-mono tabular-nums">
                 {fmt(s.value, 0)} kW<span className="ml-2 text-xs text-dim">{fmt((s.value / top) * 100, 1)} %</span>
               </span>
             </div>
